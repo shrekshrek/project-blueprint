@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Project Blueprint"
+  short_description: "Create an evidence-backed, AI-ready project blueprint"
+  default_prompt: "Use $plan-project to turn my project idea into an AI-ready development blueprint."
