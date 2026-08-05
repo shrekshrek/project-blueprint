@@ -51,6 +51,20 @@ function checkLinks(relative, content) {
   }
 }
 
+const ciWorkflow = read(".github/workflows/ci.yml");
+for (const marker of [
+  "  validate:",
+  "actions/checkout@v7",
+  "actions/setup-node@v7",
+  "node-version: 20",
+  "node scripts/check-all.cjs",
+]) {
+  if (!ciWorkflow.includes(marker)) problems.push(`CI workflow: missing ${JSON.stringify(marker)}`);
+}
+if ((ciWorkflow.match(/branches: \[main\]/g) || []).length !== 2) {
+  problems.push("CI workflow: push and pull_request must both target main");
+}
+
 const claudeRoot = path.join(root, "adapters/claude/skills");
 const codexRoot = path.join(root, "adapters/codex/skills");
 const claudeActions = filesIn(claudeRoot, "SKILL.md");
