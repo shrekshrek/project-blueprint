@@ -60,6 +60,48 @@ docs/adr/                     durable cross-feature architecture decisions
 
 The canonical method is maintained once. Claude and Codex adapters contain only host-specific loading and subagent instructions.
 
+## Install
+
+Install from this GitHub repository through the native marketplace commands.
+
+Claude Code:
+
+```text
+/plugin marketplace add shrekshrek/project-blueprint
+/plugin install project-blueprint@project-blueprint
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add shrekshrek/project-blueprint
+codex plugin add project-blueprint@project-blueprint
+```
+
+To update later, refresh the marketplace and plugin, then start a new task so the refreshed skills are loaded:
+
+```bash
+claude plugin marketplace update project-blueprint
+claude plugin update project-blueprint@project-blueprint
+codex plugin marketplace upgrade project-blueprint
+codex plugin add project-blueprint@project-blueprint
+```
+
+The primary entry point is `$plan-project`; `$review-blueprint` performs a focused readiness review.
+
+For local development, build an isolated marketplace and add its generated directory instead of the GitHub repository:
+
+```bash
+BLUEPRINT_DIST_ROOT="$(mktemp -d)"
+node scripts/build-plugin-packages.cjs --out "$BLUEPRINT_DIST_ROOT"
+claude plugin marketplace add "$BLUEPRINT_DIST_ROOT"
+claude plugin install project-blueprint@project-blueprint
+codex plugin marketplace add "$BLUEPRINT_DIST_ROOT"
+codex plugin add project-blueprint@project-blueprint
+```
+
+The local and GitHub sources intentionally use the same marketplace name. Do not configure both at once; remove the existing `project-blueprint` marketplace before switching sources.
+
 ## Development
 
 Requires Node.js 18 or later. The repository has no npm dependencies or `package.json`; Node scripts are invoked directly, matching `project-workflow`.
@@ -86,8 +128,10 @@ Source adapters reference the shared root method. The build script produces self
 
 - Claude source manifest: `adapters/claude/.claude-plugin/plugin.json`
 - Codex source manifest: `adapters/codex/.codex-plugin/plugin.json`
+- Claude repository marketplace: `.claude-plugin/marketplace.json`
+- Codex repository marketplace: `.agents/plugins/marketplace.json`
 
-Marketplace metadata is intentionally deferred until the generated packages are published to a real distribution branch; source adapters alone are not self-contained installation packages.
+The source adapters remain on `main`; generated packages are not committed there. A commit whose subject starts with `release: vX.Y.Z` must carry the same new version in both manifests. After validation on `main`, CI builds both self-contained packages and force-publishes them, together with local marketplace indexes, to `plugin-dist`. The repository marketplace files resolve installations to the appropriate package on that branch.
 
 ## Scope
 

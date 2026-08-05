@@ -1,0 +1,34 @@
+{
+  "name": "project-blueprint",
+  "owner": {
+    "name": "shrek.wang"
+  },
+  "metadata": {
+    "description": "Evidence-backed project inception for AI-ready development blueprints"
+  },
+  "plugins": [
+    {
+      "name": "project-blueprint",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/shrekshrek/project-blueprint.git",
+        "path": "claude/project-blueprint",
+        "ref": "plugin-dist"
+      },
+      "description": "Adaptive pre-development planning with nine focused skills and five conditional support roles for feasibility, users, scope, domain, architecture, data, delivery, and review.",
+      "author": {
+        "name": "shrek.wang"
+      },
+      "homepage": "https://github.com/shrekshrek/project-blueprint",
+      "repository": "https://github.com/shrekshrek/project-blueprint",
+      "license": "MIT",
+      "keywords": [
+        "project-inception",
+        "software-architecture",
+        "product-planning",
+        "ai-development"
+      ],
+      "category": "workflow"
+    }
+  ]
+}

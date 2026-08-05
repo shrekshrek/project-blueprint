@@ -54,15 +54,28 @@ function checkLinks(relative, content) {
 const ciWorkflow = read(".github/workflows/ci.yml");
 for (const marker of [
   "  validate:",
+  "  publish:",
+  "    needs: validate",
+  "needs.validate.outputs.release",
+  "needs.validate.outputs.commit_ver",
+  "      contents: write",
   "actions/checkout@v7",
   "actions/setup-node@v7",
   "node-version: 20",
   "node scripts/check-all.cjs",
+  "node scripts/build-plugin-packages.cjs --out",
+  "git push --force origin plugin-dist",
 ]) {
   if (!ciWorkflow.includes(marker)) problems.push(`CI workflow: missing ${JSON.stringify(marker)}`);
 }
 if ((ciWorkflow.match(/branches: \[main\]/g) || []).length !== 2) {
   problems.push("CI workflow: push and pull_request must both target main");
+}
+if ((ciWorkflow.match(/actions\/checkout@v7/g) || []).length !== 2) {
+  problems.push("CI workflow: validate and publish must both use actions/checkout@v7");
+}
+if ((ciWorkflow.match(/actions\/setup-node@v7/g) || []).length !== 2) {
+  problems.push("CI workflow: validate and publish must both use actions/setup-node@v7");
 }
 
 const claudeRoot = path.join(root, "adapters/claude/skills");
@@ -80,6 +93,32 @@ if (claudeManifest.name !== "project-blueprint" || codexManifest.name !== "proje
 if (claudeManifest.version !== codexManifest.version) problems.push("manifest versions differ");
 if (codexManifest.skills !== "./skills/") problems.push("Codex skills path must be ./skills/");
 if ((codexManifest.interface?.defaultPrompt?.length || 0) > 3) problems.push("Codex defaultPrompt supports at most 3 entries");
+
+const claudeMarketplace = JSON.parse(read(".claude-plugin/marketplace.json") || "{}");
+const codexMarketplace = JSON.parse(read(".agents/plugins/marketplace.json") || "{}");
+const claudeListing = claudeMarketplace.plugins?.[0];
+const codexListing = codexMarketplace.plugins?.[0];
+if (claudeMarketplace.name !== "project-blueprint" || claudeListing?.name !== "project-blueprint") {
+  problems.push("Claude marketplace identity must be project-blueprint");
+}
+if (claudeListing?.source?.source !== "git-subdir"
+  || claudeListing?.source?.path !== "claude/project-blueprint"
+  || claudeListing?.source?.ref !== "plugin-dist") {
+  problems.push("Claude marketplace must target claude/project-blueprint on plugin-dist");
+}
+if (codexMarketplace.name !== "project-blueprint" || codexListing?.name !== "project-blueprint") {
+  problems.push("Codex marketplace identity must be project-blueprint");
+}
+if (codexListing?.source?.source !== "git-subdir"
+  || codexListing?.source?.path !== "./codex/project-blueprint"
+  || codexListing?.source?.ref !== "plugin-dist") {
+  problems.push("Codex marketplace must target codex/project-blueprint on plugin-dist");
+}
+if (codexListing?.policy?.installation !== "AVAILABLE"
+  || codexListing?.policy?.authentication !== "ON_INSTALL") {
+  problems.push("Codex marketplace policy must be AVAILABLE/ON_INSTALL");
+}
+if (codexListing?.category !== "Productivity") problems.push("Codex marketplace category must be Productivity");
 
 for (const action of actions) {
   const canonical = read(`docs/actions/${action}.md`);

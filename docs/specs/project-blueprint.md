@@ -4,7 +4,7 @@
 
 Project Blueprint is the pre-development companion to `project-workflow`. It helps a user and AI establish an evidence-backed, AI-readable planning contract before feature delivery begins.
 
-## Current scope: v0.2
+## Current scope: v0.2.1
 
 - Nine user-callable planning skills with `plan-project` as the adaptive conversation manager.
 - Five conditional internal support roles: evidence research, product challenge, domain/data review, architecture review, and consistency audit.
@@ -15,6 +15,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 - Planning covers feasibility, users/scenarios, journeys, capabilities/modules, domain ownership, concern-driven architecture/data views, quality risks, subsystem depth, revision impact, vertical slices, and development handoff.
 - A deterministic validator checks manifest fields, canonical file existence, view dispositions, revisit triggers, and the handoff approval boundary.
 - Blueprint approval and development authorization are separate; development begins only after explicit authorization.
+- GitHub marketplace indexes route Claude Code and Codex to host-specific, self-contained packages generated on the `plugin-dist` branch by versioned release CI.
 
 ## Product invariants
 
@@ -29,6 +30,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 9. Claude and Codex adapters share one canonical action/reviewer/methodology core.
 10. The plugin may recommend `project-workflow` but may not mutate an implementation project without separate development authorization.
 11. Action count never determines file count; each decision has one owning artifact and other artifacts reference it instead of repeating it.
+12. `main` owns canonical source; generated install packages live only on `plugin-dist` and must match both source manifest versions.
 
 ## Deferred
 

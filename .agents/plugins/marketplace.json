@@ -1,0 +1,22 @@
+{
+  "name": "project-blueprint",
+  "interface": {
+    "displayName": "Project Blueprint"
+  },
+  "plugins": [
+    {
+      "name": "project-blueprint",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/shrekshrek/project-blueprint.git",
+        "path": "./codex/project-blueprint",
+        "ref": "plugin-dist"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
