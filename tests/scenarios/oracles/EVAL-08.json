@@ -1,0 +1,31 @@
+{
+  "id": "EVAL-08",
+  "archetype": "brownfield-rebaseline",
+  "expected_actions": [
+    "review-blueprint",
+    "frame-project",
+    "define-product-scope",
+    "model-domain",
+    "model-data",
+    "design-architecture",
+    "plan-delivery"
+  ],
+  "conditional_roles": [
+    "evidence-researcher",
+    "product-challenger",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "as-is-evidence",
+    "source-conflicts",
+    "to-be-boundaries",
+    "data-migration",
+    "revision-impact"
+  ],
+  "forbidden_outputs": [
+    "implementation-equals-requirement",
+    "silent-conflict-resolution"
+  ]
+}

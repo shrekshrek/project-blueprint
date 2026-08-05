@@ -1,0 +1,33 @@
+{
+  "id": "EVAL-07",
+  "archetype": "regulated-multitenant",
+  "expected_actions": [
+    "frame-project",
+    "model-users-and-journeys",
+    "define-product-scope",
+    "model-domain",
+    "model-data",
+    "design-architecture",
+    "plan-delivery",
+    "review-blueprint"
+  ],
+  "conditional_roles": [
+    "evidence-researcher",
+    "product-challenger",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "identity-flow",
+    "trust-boundary",
+    "classification-retention",
+    "audit",
+    "deployment-resilience"
+  ],
+  "forbidden_outputs": [
+    "unverified-law-confirmed",
+    "invented-rto-rpo",
+    "invented-region"
+  ]
+}

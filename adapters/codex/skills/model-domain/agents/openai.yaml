@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model Domain"
+  short_description: "Clarify domain language, rules, and ownership"
+  default_prompt: "Use $model-domain for this project planning request."

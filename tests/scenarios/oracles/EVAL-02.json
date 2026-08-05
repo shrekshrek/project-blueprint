@@ -1,0 +1,29 @@
+{
+  "id": "EVAL-02",
+  "archetype": "workflow-saas",
+  "expected_actions": [
+    "frame-project",
+    "model-users-and-journeys",
+    "define-product-scope",
+    "model-domain",
+    "design-architecture",
+    "model-data",
+    "plan-delivery"
+  ],
+  "conditional_roles": [
+    "product-challenger",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "approval-lifecycle",
+    "tenant-boundary",
+    "rule-ownership",
+    "logical-er",
+    "critical-sequence"
+  ],
+  "forbidden_outputs": [
+    "service-per-module"
+  ]
+}

@@ -1,0 +1,20 @@
+schema_version: "0.2"
+project_name: habit-tracker
+blueprint_version: "0.1.0"
+blueprint_status: review
+development_authorization: not_granted
+canonical_files:
+  - charter.md
+  - development-handoff.yaml
+view_decisions:
+  - concern_id: CON-001
+    disposition: selected
+    representation: merged-context-building-block
+    rationale: One deployable unit and no external systems beyond the user
+    revisit_trigger: More runtime units or external systems are introduced
+  - concern_id: CON-002
+    disposition: not_applicable
+    representation: null
+    rationale: No multi-system deployment topology exists
+    revisit_trigger: Private deployment or high availability becomes required
+open_blockers:

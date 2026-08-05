@@ -1,0 +1,14 @@
+schema_version: "0.2"
+project_name: broken
+blueprint_version: "0.1.0"
+blueprint_status: draft
+development_authorization: not_granted
+canonical_files:
+  - charter.md
+view_decisions:
+  - concern_id: CON-001
+    disposition: deferred
+    representation: deployment
+    rationale:
+    revisit_trigger:
+open_blockers:

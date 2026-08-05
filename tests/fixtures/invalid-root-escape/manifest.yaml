@@ -1,0 +1,14 @@
+schema_version: "0.2"
+project_name: escape
+blueprint_version: "0.1.0"
+blueprint_status: draft
+development_authorization: not_granted
+canonical_files:
+  - ../outside.md
+view_decisions:
+  - concern_id: CON-001
+    disposition: selected
+    representation: system-context
+    rationale: Boundary evaluation
+    revisit_trigger: Boundary changes
+open_blockers: []

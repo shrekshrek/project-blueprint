@@ -1,0 +1,30 @@
+{
+  "id": "EVAL-01",
+  "archetype": "lean-crud",
+  "expected_actions": [
+    "frame-project",
+    "model-users-and-journeys",
+    "define-product-scope",
+    "design-architecture",
+    "model-data",
+    "plan-delivery"
+  ],
+  "conditional_roles": [
+    "product-challenger",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "system-boundary",
+    "primary-responsibilities",
+    "relational-data",
+    "lean-artifact-density"
+  ],
+  "forbidden_outputs": [
+    "ddd-context-map",
+    "microservices",
+    "cluster-deployment",
+    "all-five-roles-by-default",
+    "separate-file-per-action",
+    "repeated-decision-restatement"
+  ]
+}
