@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model Users And Journeys"
+  short_description: "Model actors, scenarios, journeys, and operations"
+  default_prompt: "Use $model-users-and-journeys for this project planning request."

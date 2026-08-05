@@ -1,0 +1,8 @@
+read_first:
+  - charter.md
+first_slice_id: SLC-001
+development_authorization: not_granted
+requires_development_authorization: true
+confirmed_contracts: []
+accepted_assumptions: []
+open_blockers: []

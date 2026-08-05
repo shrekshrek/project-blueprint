@@ -1,0 +1,14 @@
+schema_version: "0.2"
+project_name: mismatch
+blueprint_version: "0.1.0"
+blueprint_status: review
+development_authorization: granted
+canonical_files:
+  - charter.md
+view_decisions:
+  - concern_id: CON-001
+    disposition: selected
+    representation: system-context
+    rationale: Boundary evaluation
+    revisit_trigger: Boundary changes
+open_blockers: []

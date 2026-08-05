@@ -1,0 +1,29 @@
+{
+  "id": "EVAL-03",
+  "archetype": "integration-heavy",
+  "expected_actions": [
+    "frame-project",
+    "define-product-scope",
+    "model-domain",
+    "design-architecture",
+    "model-data",
+    "plan-delivery"
+  ],
+  "conditional_roles": [
+    "evidence-researcher",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "system-landscape",
+    "authoritative-status",
+    "failure-retry-idempotency",
+    "integration-contracts"
+  ],
+  "forbidden_outputs": [
+    "invented-broker",
+    "invented-port",
+    "unjustified-sync-async"
+  ]
+}

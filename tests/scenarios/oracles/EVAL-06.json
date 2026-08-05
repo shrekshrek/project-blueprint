@@ -1,0 +1,30 @@
+{
+  "id": "EVAL-06",
+  "archetype": "multi-subsystem-enterprise",
+  "expected_actions": [
+    "frame-project",
+    "define-product-scope",
+    "model-domain",
+    "design-architecture",
+    "model-data",
+    "plan-delivery",
+    "review-blueprint"
+  ],
+  "conditional_roles": [
+    "product-challenger",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "system-landscape",
+    "black-box-subsystems",
+    "cross-system-contracts",
+    "parent-child-inheritance",
+    "selected-deep-dives"
+  ],
+  "forbidden_outputs": [
+    "automatic-full-subsystem-tree"
+  ],
+  "revision_assertion": "Changing customer-master ownership must produce a parent-level impact proposal before child artifacts change."
+}

@@ -1,53 +1,97 @@
 # Project Blueprint
 
-Project Blueprint is a Codex plugin for the work that should happen **before implementation starts**. It turns an uncertain project idea into a compact, evidence-backed blueprint that an AI development agent can follow without inventing product, domain, architecture, or data decisions.
+Project Blueprint is a cross-tool planning plugin for the work that should happen **before implementation starts**. It guides a user from an uncertain idea or unstable existing project to an evidence-backed, AI-readable blueprint without forcing every project through the same questionnaire or diagram checklist.
 
 ```text
-project idea
-    ↓
-project-blueprint   feasibility → scenarios → scope → domain → architecture → data → slices
-    ↓               AI-ready development handoff
-project-workflow    spec → plan → tasks → implementation → verification → archive
+project idea or unstable project
+            ↓
+project-blueprint
+  feasibility → users/journeys → scope → domain → architecture/data → slices
+            ↓
+  reviewed AI-ready development handoff
+            ↓
+project-workflow or another implementation process (only after user approval)
 ```
 
-## Why
+## What changed in v0.2
 
-Large AI-assisted projects often accumulate features faster than their boundaries and data ownership can stabilize. The result is repeated implementation, schema churn, and contradictory specifications. Project Blueprint moves the expensive questions forward while keeping the planning depth proportional to risk.
+The original single `$plan-project` prototype is now a manager over nine focused planning skills:
 
-The canonical output is Markdown, YAML, and Mermaid with stable IDs and explicit evidence status. Interactive HTML can be added as a renderer later; it is deliberately not the source of truth.
+| Skill | Responsibility |
+|---|---|
+| `$plan-project` | Adaptively route, resume, revise, and complete the planning conversation |
+| `$frame-project` | Establish value, feasibility, constraints, and success |
+| `$model-users-and-journeys` | Model actors, scenarios, journeys, and operational touchpoints |
+| `$define-product-scope` | Define capabilities, modules, MVP, acceptance, and non-goals |
+| `$model-domain` | Clarify language, rules, ownership, and bounded contexts |
+| `$design-architecture` | Select the minimum sufficient structural and runtime views |
+| `$model-data` | Select data models according to relational, graph, RAG, event, or pipeline shape |
+| `$plan-delivery` | Create vertical learning slices and the development handoff |
+| `$review-blueprint` | Run independent risk-routed review |
 
-## Included in v0.1
+Five internal support roles provide evidence research, product challenge, domain/data review, architecture review, and consistency audit. They are invoked only when applicable; they are not a fixed five-agent ceremony.
 
-- `$plan-project`, an end-to-end project-inception skill;
-- feasibility review across product, operational, technical/data, and delivery constraints;
-- scenario, user-journey, capability, DDD boundary, architecture, ER/data, quality-risk, and MVP-slice guidance;
-- a defined eleven-file blueprint contract;
-- a handoff boundary for [project-workflow](https://github.com/shrekshrek/project-workflow).
+## Method
 
-This first version defines and validates the planning method. Automated HTML rendering and blueprint linting are planned follow-up features, not v0.1 claims.
+- `plan-project` keeps the user conversation and recommends the next highest-value decision.
+- Inputs already supplied are not asked again.
+- Material statements remain `confirmed`, `assumption`, `deferred`, or `out_of_scope`.
+- Architecture and data views are selected from stakeholder concerns and risk, not a required count.
+- Small, single-owner projects default to merged, decision-dense artifacts; action count never determines file count.
+- Multi-subsystem projects establish global black-box responsibilities first, then deepen selected scopes without losing parent contracts.
+- Revisions produce an impact list before changing confirmed content.
+- Markdown, YAML, and Mermaid are canonical. HTML or images may be added later as renderers.
+- Blueprint-content approval and development authorization are separate decisions. The plugin stops at a reviewed handoff and never starts development automatically.
 
 ## Repository layout
 
 ```text
-.codex-plugin/plugin.json                 plugin manifest
-skills/plan-project/SKILL.md              planning workflow
-skills/plan-project/references/           output contract
-docs/specs/                                current product truth
-docs/adr/                                  durable architecture decisions
+docs/actions/                 canonical contracts for 9 user skills
+docs/reviewers/               canonical contracts for 5 internal roles
+docs/methodology/             routing, artifacts, view selection, subsystem revision
+adapters/claude/              Claude Code skills, agents, and manifest
+adapters/codex/               Codex skills and manifest
+scripts/                      parity, packaging, and blueprint validation
+tests/fixtures/               deterministic validator fixtures
+tests/scenarios/              isolated forward-test inputs and scoring oracles
+docs/specs/                   current product truth
+docs/adr/                     durable cross-feature architecture decisions
 ```
 
-## Development validation
+The canonical method is maintained once. Claude and Codex adapters contain only host-specific loading and subagent instructions.
 
-Use the validators bundled with Codex's `plugin-creator` and `skill-creator` skills when available. At minimum, validate JSON syntax and ensure no scaffold placeholders remain:
+## Development
+
+Requires Node.js 18 or later. The repository has no npm dependencies or `package.json`; Node scripts are invoked directly, matching `project-workflow`.
 
 ```bash
-python3 -m json.tool .codex-plugin/plugin.json
-rg -n '\[TODO|TODO:' .codex-plugin skills
+node scripts/check-all.cjs
+node scripts/validate-blueprint.cjs /path/to/project-blueprint
+node scripts/build-plugin-packages.cjs --out /empty/output-directory
 ```
 
-## Status
+`check-all.cjs` verifies:
 
-`0.1.0` — initial public method and plugin scaffold. The contract may evolve while preserving stable IDs and explicit versioning.
+- the same nine actions exist in both adapters;
+- all five canonical roles are reachable;
+- adapter links and manifests are valid;
+- adapters remain thin and host-specific markers do not leak;
+- valid and invalid blueprint fixtures behave deterministically;
+- all eight forward-test inputs and hidden scoring oracles remain complete and reference real actions/roles;
+- self-contained Claude and Codex packages can be built.
+
+## Packaging
+
+Source adapters reference the shared root method. The build script produces self-contained packages containing the appropriate adapter plus `docs/actions`, `docs/reviewers`, `docs/methodology`, the validator, and the license.
+
+- Claude source manifest: `adapters/claude/.claude-plugin/plugin.json`
+- Codex source manifest: `adapters/codex/.codex-plugin/plugin.json`
+
+Marketplace metadata is intentionally deferred until the generated packages are published to a real distribution branch; source adapters alone are not self-contained installation packages.
+
+## Scope
+
+v0.2 intentionally does not include a web UI, HTML renderer, database service, visual editor, long-running agent service, or industry-specific reviewer packs. Those require evidence from real blueprint use.
 
 ## License
 

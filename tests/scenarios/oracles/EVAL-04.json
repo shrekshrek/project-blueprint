@@ -1,0 +1,28 @@
+{
+  "id": "EVAL-04",
+  "archetype": "data-platform",
+  "expected_actions": [
+    "frame-project",
+    "define-product-scope",
+    "model-domain",
+    "model-data",
+    "design-architecture",
+    "plan-delivery"
+  ],
+  "conditional_roles": [
+    "evidence-researcher",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "information-model",
+    "data-flow-lineage",
+    "quality",
+    "retention",
+    "reprocessing"
+  ],
+  "forbidden_outputs": [
+    "er-only-data-design"
+  ]
+}

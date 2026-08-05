@@ -1,0 +1,38 @@
+{
+  "name": "project-blueprint",
+  "version": "0.2.0",
+  "description": "Adaptive project inception for Codex and Claude Code with evidence, product, domain, architecture, data, delivery, and blueprint review.",
+  "author": {
+    "name": "shrek.wang",
+    "url": "https://github.com/shrekshrek"
+  },
+  "homepage": "https://github.com/shrekshrek/project-blueprint",
+  "repository": "https://github.com/shrekshrek/project-blueprint.git",
+  "license": "MIT",
+  "keywords": [
+    "project-inception",
+    "software-architecture",
+    "product-planning",
+    "ai-development",
+    "codex",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Project Blueprint",
+    "shortDescription": "Plan AI-ready projects before development.",
+    "longDescription": "Project Blueprint adaptively guides feasibility, users, scope, domain, architecture, data, risks, subsystem depth, and delivery into one evidence-backed handoff.",
+    "developerName": "shrek.wang",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write",
+      "Review"
+    ],
+    "defaultPrompt": [
+      "Use $plan-project to turn my project idea into an AI-ready development blueprint.",
+      "Use $review-blueprint to review whether this project is ready for development.",
+      "Use $plan-project to re-baseline a project with unstable scope or data ownership."
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "EVAL-05",
+  "archetype": "ai-rag-knowledge",
+  "expected_actions": [
+    "frame-project",
+    "model-users-and-journeys",
+    "define-product-scope",
+    "model-domain",
+    "model-data",
+    "design-architecture",
+    "plan-delivery",
+    "review-blueprint"
+  ],
+  "conditional_roles": [
+    "evidence-researcher",
+    "product-challenger",
+    "domain-data-reviewer",
+    "architecture-reviewer",
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "ontology-graph",
+    "document-chunk-embedding-index",
+    "retrieval-runtime",
+    "permission-trust-boundary",
+    "citation"
+  ],
+  "forbidden_outputs": [
+    "twenty-one-skills",
+    "twenty-one-required-views",
+    "er-only-data-design"
+  ]
+}
