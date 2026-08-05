@@ -20,6 +20,7 @@ This file is the cross-tool source of truth for working in this repository.
 - Shared planning method: `docs/methodology/`.
 - Claude Code runtime adapter: `adapters/claude/`.
 - Codex runtime adapter: `adapters/codex/`.
+- Repository marketplace indexes: `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 - Deterministic tooling: `scripts/`.
 - Validator fixtures: `tests/fixtures/`.
 - Persistent product truth: `docs/specs/`.
@@ -31,6 +32,7 @@ This file is the cross-tool source of truth for working in this repository.
 - Keep one method source; adapters may add host execution detail but must not copy action or reviewer logic.
 - Update action/reviewer/methodology first, then both adapters and parity checks when the public behavior changes.
 - Add or update deterministic fixtures for schema, reference, state, and packaging changes.
+- Use `release: vX.Y.Z ...` only for an intentional release; bump both adapter manifests in the same commit. CI publishes generated packages to `plugin-dist`.
 - Use normal implementation and review flow in this repository; do not create `feature-init` artifacts unless the user explicitly asks for them.
 
 ## Working Rules

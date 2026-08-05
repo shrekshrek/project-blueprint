@@ -9,6 +9,10 @@ const actions = [
   "model-domain", "model-users-and-journeys", "plan-delivery", "plan-project",
   "review-blueprint",
 ];
+const roles = [
+  "architecture-reviewer", "consistency-auditor", "domain-data-reviewer",
+  "evidence-researcher", "product-challenger",
+];
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -38,6 +42,47 @@ function skillNames(directory) {
     .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(directory, entry.name, "SKILL.md")))
     .map((entry) => entry.name).sort();
 }
+function same(left, right) {
+  return left.length === right.length && left.every((value, index) => value === right[index]);
+}
+function requirePath(packageRoot, relative) {
+  if (!fs.existsSync(path.join(packageRoot, relative))) {
+    throw new Error(`${path.basename(path.dirname(packageRoot))} package missing ${relative}`);
+  }
+}
+function validatePackage(packageRoot, host) {
+  const manifestRelative = host === "claude"
+    ? ".claude-plugin/plugin.json"
+    : ".codex-plugin/plugin.json";
+  requirePath(packageRoot, manifestRelative);
+  const manifest = JSON.parse(fs.readFileSync(path.join(packageRoot, manifestRelative), "utf8"));
+  if (manifest.name !== "project-blueprint") throw new Error(`${host} manifest name changed`);
+  if (host === "codex" && manifest.skills !== "./skills/") {
+    throw new Error("Codex manifest skills path must be ./skills/");
+  }
+
+  const names = skillNames(path.join(packageRoot, "skills"));
+  if (!same(names, actions)) throw new Error(`${host} package action set differs: ${names.join(", ")}`);
+  for (const action of actions) requirePath(packageRoot, `docs/actions/${action}.md`);
+  for (const role of roles) requirePath(packageRoot, `docs/reviewers/${role}.md`);
+  for (const relative of [
+    "docs/methodology/artifact-contract.md",
+    "docs/methodology/view-selection.md",
+    "scripts/validate-blueprint.cjs",
+    "LICENSE",
+  ]) requirePath(packageRoot, relative);
+
+  if (host === "claude") {
+    const agentNames = fs.readdirSync(path.join(packageRoot, "agents"))
+      .filter((name) => name.endsWith(".md"))
+      .map((name) => name.replace(/\.md$/, ""))
+      .sort();
+    if (!same(agentNames, roles)) throw new Error(`Claude package agent set differs: ${agentNames.join(", ")}`);
+  } else if (fs.existsSync(path.join(packageRoot, "agents"))) {
+    throw new Error("Codex package must use reviewer specs through native subagents");
+  }
+  return manifest.version;
+}
 function build(host, output) {
   const packageRoot = path.join(output, host, "project-blueprint");
   const transform = host === "codex"
@@ -49,12 +94,43 @@ function build(host, output) {
   }
   copyFile(path.join(root, "scripts/validate-blueprint.cjs"), path.join(packageRoot, "scripts/validate-blueprint.cjs"));
   copyFile(path.join(root, "LICENSE"), path.join(packageRoot, "LICENSE"));
-  const names = skillNames(path.join(packageRoot, "skills"));
-  if (JSON.stringify(names) !== JSON.stringify(actions)) throw new Error(`${host} package action set differs`);
-  for (const action of actions) {
-    if (!fs.existsSync(path.join(packageRoot, "docs/actions", `${action}.md`))) throw new Error(`${host}: missing action ${action}`);
-  }
   return packageRoot;
+}
+function writeJson(target, value) {
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, `${JSON.stringify(value, null, 2)}\n`);
+}
+function writeGeneratedMarketplaces(outputRoot) {
+  writeJson(path.join(outputRoot, ".claude-plugin/marketplace.json"), {
+    name: "project-blueprint",
+    owner: { name: "shrek.wang" },
+    metadata: { description: "Evidence-backed project inception for AI-ready development blueprints" },
+    plugins: [{ name: "project-blueprint", source: "./claude/project-blueprint" }],
+  });
+  writeJson(path.join(outputRoot, ".agents/plugins/marketplace.json"), {
+    name: "project-blueprint",
+    interface: { displayName: "Project Blueprint" },
+    plugins: [{
+      name: "project-blueprint",
+      source: { source: "local", path: "./codex/project-blueprint" },
+      policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" },
+      category: "Productivity",
+    }],
+  });
+}
+function validateGeneratedMarketplaces(outputRoot) {
+  const claude = JSON.parse(fs.readFileSync(path.join(outputRoot, ".claude-plugin/marketplace.json"), "utf8"));
+  const codex = JSON.parse(fs.readFileSync(path.join(outputRoot, ".agents/plugins/marketplace.json"), "utf8"));
+  if (claude.plugins?.[0]?.name !== "project-blueprint" || claude.plugins?.[0]?.source !== "./claude/project-blueprint") {
+    throw new Error("Generated Claude marketplace source is invalid");
+  }
+  const plugin = codex.plugins?.[0];
+  if (plugin?.name !== "project-blueprint" || plugin?.source?.source !== "local" || plugin?.source?.path !== "./codex/project-blueprint") {
+    throw new Error("Generated Codex marketplace source is invalid");
+  }
+  if (plugin.policy?.installation !== "AVAILABLE" || plugin.policy?.authentication !== "ON_INSTALL") {
+    throw new Error("Generated Codex marketplace policy is invalid");
+  }
 }
 function parse() {
   if (process.argv.length === 3 && process.argv[2] === "--check") {
@@ -72,10 +148,12 @@ try {
   fs.mkdirSync(options.output, { recursive: true });
   const claude = build("claude", options.output);
   const codex = build("codex", options.output);
-  const cv = JSON.parse(fs.readFileSync(path.join(claude, ".claude-plugin/plugin.json"), "utf8")).version;
-  const xv = JSON.parse(fs.readFileSync(path.join(codex, ".codex-plugin/plugin.json"), "utf8")).version;
+  writeGeneratedMarketplaces(options.output);
+  const cv = validatePackage(claude, "claude");
+  const xv = validatePackage(codex, "codex");
   if (cv !== xv) throw new Error("packaged manifest versions differ");
-  console.log(`Plugin packages built: v${cv} (Claude + Codex)`);
+  validateGeneratedMarketplaces(options.output);
+  console.log(`Plugin packages built: v${cv} (Claude + Codex + marketplaces)`);
 } finally {
   if (options?.temporary) fs.rmSync(options.temporary, { recursive: true, force: true });
 }
