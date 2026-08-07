@@ -19,7 +19,7 @@ Confirmed charter and scope, scenarios, domain/data ownership, selected architec
 5. Identify decisions that may need ADRs during implementation; do not create them preemptively.
 6. Build a read-first list and confirmed-contract/accepted-assumption set.
 7. Keep unresolved blockers visible and attach validation actions and owners.
-8. Set `development_authorization: not_granted` and `requires_development_authorization: true`; recommend but do not invoke `project-workflow`.
+8. Set `development_authorization: not_granted` and `requires_development_authorization: true`; recommend but do not invoke `project-workflow`. Set `recommended_workflow.action` to `project-init` only when the intended implementation target is empty or contains no project evidence; use `project-personalize` when blueprint artifacts or other project-specific content already exist there. If the target state is unavailable, ask one focused routing question instead of guessing one action.
 
 ## Outputs
 

@@ -180,6 +180,17 @@ for (const scanRoot of scanRoots) {
   }
 }
 
+const deliveryAction = read("docs/actions/plan-delivery.md");
+const artifactContract = read("docs/methodology/artifact-contract.md");
+for (const [relative, content] of [
+  ["docs/actions/plan-delivery.md", deliveryAction],
+  ["docs/methodology/artifact-contract.md", artifactContract],
+]) {
+  for (const marker of ["`project-init`", "`project-personalize`", "target state"]) {
+    if (!content.includes(marker)) problems.push(`${relative}: missing state-aware workflow routing marker ${marker}`);
+  }
+}
+
 if (problems.length) {
   console.error("Adapter/core validation failed:");
   for (const problem of problems) console.error(`- ${problem}`);

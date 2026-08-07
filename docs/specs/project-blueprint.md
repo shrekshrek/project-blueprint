@@ -28,7 +28,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 7. Multi-subsystem planning establishes global black-box contracts before selected deep dives; child scopes cannot silently override parent contracts.
 8. Confirmed revisions require impact analysis and consistency closure.
 9. Claude and Codex adapters share one canonical action/reviewer/methodology core.
-10. The plugin may recommend `project-workflow` but may not mutate an implementation project without separate development authorization.
+10. The plugin may recommend the target-appropriate `project-workflow` entry action but may not mutate an implementation project without separate development authorization.
 11. Action count never determines file count; each decision has one owning artifact and other artifacts reference it instead of repeating it.
 12. `main` owns canonical source; generated install packages live only on `plugin-dist` and must match both source manifest versions.
 

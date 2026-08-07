@@ -99,7 +99,7 @@ The handoff must state:
 - validation commands or evidence;
 - current `development_authorization`;
 - `requires_development_authorization: true`;
-- recommended next system may be `project-workflow`, but never auto-invoke it.
+- recommended next system may be `project-workflow`, but never auto-invoke it; choose its action from the intended implementation target rather than treating `project-init` as a universal next step.
 
 Minimum shape:
 
@@ -118,9 +118,11 @@ validation:
   - node /path/to/validate-blueprint.cjs .
 recommended_workflow:
   next_system: project-workflow
-  action: project-init
+  action: project-personalize
 development_authorization: not_granted
 requires_development_authorization: true
 ```
+
+Set `recommended_workflow.action` to `project-init` only when the intended implementation target is empty or contains no project evidence. Use `project-personalize` when blueprint artifacts, a scaffold, code, configuration, or other project-specific truth already exists there. If the target state is unavailable, ask one focused routing question instead of guessing. The selected action remains a recommendation and is never invoked by Project Blueprint.
 
 Set `blueprint_status: approved` only after the user accepts the blueprint content. Set `development_authorization: granted` only after a separate explicit request to begin or hand off implementation; granting it never causes Project Blueprint to invoke another workflow automatically.
