@@ -4,7 +4,7 @@
 
 Project Blueprint is the pre-development companion to `project-workflow`. It helps a user and AI establish an evidence-backed, AI-readable planning contract before feature delivery begins.
 
-## Current scope: v0.2.1
+## Current scope: v0.2.2
 
 - Nine user-callable planning skills with `plan-project` as the adaptive conversation manager.
 - Five conditional internal support roles: evidence research, product challenge, domain/data review, architecture review, and consistency audit.
@@ -31,6 +31,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 10. The plugin may recommend the target-appropriate `project-workflow` entry action but may not mutate an implementation project without separate development authorization.
 11. Action count never determines file count; each decision has one owning artifact and other artifacts reference it instead of repeating it.
 12. `main` owns canonical source; generated install packages live only on `plugin-dist` and must match both source manifest versions.
+13. Multi-role readiness review uses one stable bounded input; results from different blueprint states are never combined, and coverage references reuse existing IDs or artifact sections rather than forcing new identifiers.
 
 ## Deferred
 

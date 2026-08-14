@@ -40,6 +40,7 @@ Five internal support roles provide evidence research, product challenge, domain
 - Small, single-owner projects default to merged, decision-dense artifacts; action count never determines file count.
 - Multi-subsystem projects establish global black-box responsibilities first, then deepen selected scopes without losing parent contracts.
 - Revisions produce an impact list before changing confirmed content.
+- Multi-role readiness review freezes one bounded blueprint input, waits for terminal role reports, and never aggregates results from different snapshot states.
 - Markdown, YAML, and Mermaid are canonical. HTML or images may be added later as renderers.
 - Blueprint-content approval and development authorization are separate decisions. The plugin stops at a reviewed handoff and never starts development automatically.
 

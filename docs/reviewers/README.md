@@ -6,6 +6,8 @@ The owning action decides applicability. A host with subagent capability should 
 
 Roles return findings to the owning action; they do not take over the user conversation or make unconfirmed product decisions.
 
+When roles run together under `review-blueprint`, that action owns the stable input boundary and aggregation. Progress is status-only; each applicable role returns one terminal report with its reviewed existing IDs or `artifact#section` references and unverified areas. This rule is specific to multi-role readiness review and does not turn ordinary specialist support during planning into a terminal-only ceremony.
+
 | Role | Purpose |
 |---|---|
 | [`evidence-researcher`](evidence-researcher.md) | Verify external or repository facts and expose conflicts |

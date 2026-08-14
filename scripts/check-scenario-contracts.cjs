@@ -10,6 +10,13 @@ const actions = new Set(fs.readdirSync(path.join(root, "docs/actions")).filter((
 const roles = new Set(fs.readdirSync(path.join(root, "docs/reviewers")).filter((name) => name.endsWith(".md") && name !== "README.md").map((name) => name.slice(0, -3)));
 const errors = [];
 
+function requireMarkers(relative, markers) {
+  const content = fs.readFileSync(path.join(root, relative), "utf8");
+  for (const marker of markers) {
+    if (!content.includes(marker)) errors.push(`${relative}: missing ${JSON.stringify(marker)}`);
+  }
+}
+
 for (const id of expected) {
   const input = path.join(inputRoot, `${id}.md`);
   const oracle = path.join(oracleRoot, `${id}.json`);
@@ -34,6 +41,12 @@ for (const id of expected) {
 const extraInputs = fs.readdirSync(inputRoot).filter((name) => name.endsWith(".md") && !expected.includes(name.slice(0, -3)));
 const extraOracles = fs.readdirSync(oracleRoot).filter((name) => name.endsWith(".json") && !expected.includes(name.slice(0, -5)));
 if (extraInputs.length || extraOracles.length) errors.push("unexpected scenario files");
+requireMarkers("tests/scenarios/README.md", [
+  "## Release model smoke",
+  "`EVAL-01` plus one risk-relevant complex scenario",
+  "fresh Claude and Codex conversations",
+  "Documentation-only changes",
+]);
 if (errors.length) {
   console.error("Scenario contract check failed:");
   for (const error of errors) console.error(`- ${error}`);

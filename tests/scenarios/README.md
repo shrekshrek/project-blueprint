@@ -19,3 +19,9 @@ Action recommendations and actual order, question count, skipped/returned steps,
 Score 1–5 for routing fit, question information gain, professional recommendation quality, suppression of irrelevant artifacts, information density without repeated decisions, domain/data/architecture sufficiency, global consistency, handoff executability, and user control.
 
 A run fails if it invents confirmed facts, silently skips a high-risk concern, creates enterprise ceremony for a lean project, loses parent consistency after a child revision, hides a blocker, or produces a handoff that a fresh implementation agent cannot execute.
+
+## Release model smoke
+
+The deterministic checks validate scenario and oracle structure; they do not execute a model. When canonical routing or multi-role review behavior changes, run `EVAL-01` plus one risk-relevant complex scenario in fresh Claude and Codex conversations. When only one host adapter changes, run those two cases on that host and rely on adapter parity for the unchanged host. Documentation-only changes with no runtime behavior change do not require a model smoke.
+
+For multi-role review changes, record that every applicable role used the same bounded snapshot, returned a terminal report before aggregation, and cited existing IDs or `artifact#section` references without forcing new identifiers. Mutate one selected input before aggregation and confirm the run is invalidated and every applicable role is dispatched again on one new boundary; no old terminal report is reused across snapshots.
