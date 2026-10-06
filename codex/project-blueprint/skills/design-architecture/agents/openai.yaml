@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Architecture"
+  short_description: "Select architecture views from concerns and risk"
+  default_prompt: "Use $design-architecture for this project planning request."
