@@ -13,7 +13,7 @@ project-blueprint
 project-workflow or another implementation process (only after user approval)
 ```
 
-## What changed in v0.2
+## What changed in v0.3
 
 The original single `$plan-project` prototype is now a manager over nine focused planning skills:
 
@@ -34,6 +34,7 @@ Five internal support roles provide evidence research, product challenge, domain
 ## Method
 
 - `plan-project` keeps the user conversation and recommends the next highest-value decision.
+- Planning uses a risk-routed diverge-then-converge loop: it broadens when research or concern coverage can change the direction, then stops after material boundaries and unknowns are closed or explicitly deferred.
 - Inputs already supplied are not asked again.
 - Material statements remain `confirmed`, `assumption`, `deferred`, or `out_of_scope`.
 - Architecture and data views are selected from stakeholder concerns and risk, not a required count.
@@ -60,6 +61,23 @@ docs/adr/                     durable cross-feature architecture decisions
 ```
 
 The canonical method is maintained once. Claude and Codex adapters contain only host-specific loading and subagent instructions.
+
+## Blueprint location
+
+For an implementation repository, keep the planning package under `docs/blueprint/`:
+
+```text
+docs/blueprint/
+├── manifest.yaml
+├── 00-project-charter.md
+├── 03-product-scope.md
+├── 05-solution.md
+└── 09-development-handoff.yaml
+```
+
+The directory is a default convention, not a migration requirement. Existing blueprints may stay elsewhere
+when `manifest.yaml` clearly identifies the canonical root. Larger projects may add subsystem packages below
+the same directory.
 
 ## Install
 
@@ -136,7 +154,7 @@ The source adapters remain on `main`; generated packages are not committed there
 
 ## Scope
 
-v0.2 intentionally does not include a web UI, HTML renderer, database service, visual editor, long-running agent service, or industry-specific reviewer packs. Those require evidence from real blueprint use.
+v0.3 intentionally does not include a web UI, HTML renderer, database service, visual editor, long-running agent service, or industry-specific reviewer packs. Those require evidence from real blueprint use.
 
 ## License
 

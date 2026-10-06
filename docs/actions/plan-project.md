@@ -25,7 +25,7 @@ User context, optional existing blueprint, repository evidence, preferred intera
 2. Summarize current truth, assumptions, conflicts, exclusions, blockers, and current scope.
 3. Choose an artifact-density strategy from project risk and ownership, then build an applicability map for the other eight actions. An action may update a merged artifact; action count never determines file count.
 4. Select the unresolved decision with the highest impact, uncertainty, irreversibility, cross-boundary reach, or blocking effect.
-5. Explain the recommended next action and invoke it with bounded inputs.
+5. Explain the recommended next action and invoke it with bounded inputs. Keep broader discovered decisions as an internal inventory or concise context; ask the user only for the next decision cluster.
 6. Update blueprint state only after showing the proposed decision/status changes to the user.
 7. Pause, skip, deepen a subsystem, or revisit an earlier decision when requested.
 8. Before handoff, invoke `review-blueprint` at a risk-appropriate depth and run structural validation when available.
@@ -46,5 +46,6 @@ The blueprint is sufficient for the next safe development decision and the user 
 - Do not hide conflicting specialist findings.
 - Do not mark unsupported decisions `confirmed`.
 - Do not expand every subsystem automatically.
+- Do not confuse planning economy with skipping discovery: cover applicable material concerns and research before converging, while rejecting speculative completeness that cannot change a decision or reduce a material risk.
 - Do not create one file per action or restate owned decisions in the handoff and review.
 - Do not mutate an implementation repository.

@@ -11,6 +11,7 @@ Runtime skills must read the corresponding action completely and may add only ho
 - Use `confirmed`, `assumption`, `deferred`, and `out_of_scope` for material assertions.
 - Do not re-ask information already present in the invocation or blueprint.
 - Ask only questions that can change a material decision; normally ask one high-impact question at a time.
+- Keep planning economical, not artificially small: explore all applicable material concerns before converging, use one decision cluster per loop, and stop only after remaining unknowns are explicitly deferred or immaterial.
 - A skipped action, role, artifact, or view needs a reason and a revisit trigger when risk can change.
 - Write each decision once in its owning artifact and reference its stable ID elsewhere. Do not repeat the same background, scope, or rationale to make every file self-contained.
 - Match artifact density to project risk. Small, single-owner projects merge action outputs aggressively; separate files are justified by independent ownership, review, lifecycle, or material complexity, not by action count.

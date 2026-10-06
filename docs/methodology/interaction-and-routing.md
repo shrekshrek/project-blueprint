@@ -27,6 +27,29 @@ Track at least:
 
 Also decide artifact density before generating files. Prefer merged artifacts when one owner and one review audience can understand them together. Split only for a real boundary such as independent ownership, subsystem depth, specialized review, or a separately evolving contract. Reassess density after review and remove duplicate restatements before handoff.
 
+## Planning economy
+
+Planning economy does not mean doing fewer planning actions. It means spending effort where it reduces uncertainty
+or establishes a boundary. Use a deliberate diverge-then-converge loop:
+
+1. **Explore** — cover the applicable concerns, gather material or volatile evidence, surface conflicts, model
+   users/domain/data/architecture concerns, and compare alternatives when they can change the direction.
+2. **Converge** — confirm boundaries, owners, authoritative data, quality risks, selected views, delivery slices,
+   and handoff; then merge, defer, or omit work whose decision value is now exhausted.
+
+Expand planning when the concern is material, uncertain, disputed, irreversible, cross-boundary, or able to change
+the next safe decision. Do not expand merely for speculative completeness, framework detail, or future features.
+Each action must have an information-gain or boundary-setting reason, but action count is not a budget and a
+complex project may need broad coverage before it can safely converge.
+
+Each interaction loop should normally focus on one decision cluster. Group questions when they share that decision
+and answering them together improves evidence or reduces rework. Dispatch specialists and collect external evidence
+when their findings can materially change the model; do not skip research just to reach a quick answer. Review the
+selected scope after exploration and again at convergence; review is not a substitute for missing discovery.
+
+Stop only when the remaining unknowns are either immaterial or explicitly recorded as assumptions/deferred items
+with validation and revisit triggers, and the next safe development decision is clear.
+
 ## Next-action selection
 
 Do not force the nine actions into a fixed sequence. Rank unresolved decisions using:
@@ -38,6 +61,8 @@ Do not force the nine actions into a fixed sequence. Rank unresolved decisions u
 - whether the decision blocks the next safe implementation choice.
 
 Recommend one decision cluster and explain why it comes next. The user may accept, redirect, defer, skip, return to an earlier decision, or finish early.
+A broad exploration may produce a larger internal decision inventory, but show it as context and ask the user only
+for the next decision cluster; do not turn the inventory into a questionnaire.
 
 ## Interaction loop
 

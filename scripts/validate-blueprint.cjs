@@ -108,6 +108,18 @@ function walk(directory, prefix = "") {
 const files = walk(root);
 for (const relative of files.filter((entry) => /handoff.*\.ya?ml$/i.test(entry))) {
   const content = fs.readFileSync(path.join(root, relative), "utf8");
+  const handoffBlueprintStatus = scalar(content, "blueprint_status");
+  const handoffStatus = scalar(content, "handoff_status");
+  if (!scalar(content, "project_name")) error(`${relative}: missing project_name`);
+  if (!handoffBlueprintStatus || !["draft", "review", "approved"].includes(handoffBlueprintStatus)) {
+    error(`${relative}: invalid or missing blueprint_status`);
+  }
+  if (!handoffStatus || !["draft", "ready", "stale"].includes(handoffStatus)) {
+    error(`${relative}: invalid or missing handoff_status`);
+  }
+  if (handoffStatus === "ready" && handoffBlueprintStatus !== "approved") {
+    error(`${relative}: ready handoff requires an approved blueprint`);
+  }
   if (!/^requires_development_authorization:\s*true\s*$/m.test(content)) {
     error(`${relative}: requires_development_authorization must be true`);
   }
@@ -118,6 +130,9 @@ for (const relative of files.filter((entry) => /handoff.*\.ya?ml$/i.test(entry))
   }
   if (!/^read_first:\s*$/m.test(content)) error(`${relative}: missing read_first`);
   if (!/^first_slice_id:\s*\S+/m.test(content)) error(`${relative}: missing first_slice_id`);
+  for (const section of ["slice_refs", "decision_refs", "contract_refs"]) {
+    if (!new RegExp(`^${section}:\\s*(?:$|\\[\\]\\s*$)`, "m").test(content)) error(`${relative}: missing ${section}`);
+  }
 }
 
 if (errors.length) {

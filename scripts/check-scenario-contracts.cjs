@@ -46,6 +46,14 @@ requireMarkers("tests/scenarios/README.md", [
   "`EVAL-01` plus one risk-relevant complex scenario",
   "fresh Claude and Codex conversations",
   "Documentation-only changes",
+  "planning depth",
+  "speculative completeness",
+]);
+requireMarkers("docs/methodology/interaction-and-routing.md", [
+  "## Planning economy",
+  "deliberate diverge-then-converge loop",
+  "complex project may need broad coverage before it can safely converge",
+  "Stop only when the remaining unknowns are either immaterial",
 ]);
 if (errors.length) {
   console.error("Scenario contract check failed:");

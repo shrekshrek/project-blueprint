@@ -1,7 +1,7 @@
 {
   "name": "project-blueprint",
   "description": "Adaptive pre-development planning for AI-ready software blueprints with nine planning skills and five independent support roles.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": {
     "name": "shrek.wang"
   },

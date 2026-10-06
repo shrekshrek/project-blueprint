@@ -18,6 +18,8 @@ Action recommendations and actual order, question count, skipped/returned steps,
 
 Score 1–5 for routing fit, question information gain, professional recommendation quality, suppression of irrelevant artifacts, information density without repeated decisions, domain/data/architecture sufficiency, global consistency, handoff executability, and user control.
 
+Also score planning depth: the run should cover applicable material concerns before convergence, then stop at the next safe development decision and avoid speculative completeness.
+
 A run fails if it invents confirmed facts, silently skips a high-risk concern, creates enterprise ceremony for a lean project, loses parent consistency after a child revision, hides a blocker, or produces a handoff that a fresh implementation agent cannot execute.
 
 ## Release model smoke

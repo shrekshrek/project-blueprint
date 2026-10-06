@@ -1,6 +1,6 @@
 {
   "name": "project-blueprint",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Adaptive project inception for Codex and Claude Code with evidence, product, domain, architecture, data, delivery, and blueprint review.",
   "author": {
     "name": "shrek.wang",

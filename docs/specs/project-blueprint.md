@@ -4,13 +4,14 @@
 
 Project Blueprint is the pre-development companion to `project-workflow`. It helps a user and AI establish an evidence-backed, AI-readable planning contract before feature delivery begins.
 
-## Current scope: v0.2.2
+## Current scope: v0.3.0
 
 - Nine user-callable planning skills with `plan-project` as the adaptive conversation manager.
 - Five conditional internal support roles: evidence research, product challenge, domain/data review, architecture review, and consistency audit.
 - One canonical methodology core shared by native Claude Code and Codex adapters.
 - Inputs may be an idea, requirements, research, an existing blueprint, or an unstable project needing re-baselining.
 - Canonical outputs are composable Markdown, YAML, and Mermaid artifacts.
+- When attached to an implementation repository, canonical artifacts default to `docs/blueprint/`; the manifest remains the root index and existing projects are not migrated solely for layout consistency.
 - Artifact density follows project risk and ownership: lean work merges outputs, while focused files or subsystem packages require a real boundary.
 - Planning covers feasibility, users/scenarios, journeys, capabilities/modules, domain ownership, concern-driven architecture/data views, quality risks, subsystem depth, revision impact, vertical slices, and development handoff.
 - A deterministic validator checks manifest fields, canonical file existence, view dispositions, revisit triggers, and the handoff approval boundary.
@@ -32,6 +33,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 11. Action count never determines file count; each decision has one owning artifact and other artifacts reference it instead of repeating it.
 12. `main` owns canonical source; generated install packages live only on `plugin-dist` and must match both source manifest versions.
 13. Multi-role readiness review uses one stable bounded input; results from different blueprint states are never combined, and coverage references reuse existing IDs or artifact sections rather than forcing new identifiers.
+14. Planning follows a risk-routed diverge-then-converge loop: applicable material concerns are explored and researched before convergence; specialist, evidence, view, and review depth expand when they reduce uncertainty or establish boundaries, while speculative completeness is excluded.
 
 ## Deferred
 

@@ -1,6 +1,14 @@
+project_name: habit-tracker
+blueprint_status: review
+handoff_status: draft
+blueprint_version: "0.1.0"
 read_first:
   - charter.md
 first_slice_id: SLC-001
+slice_refs:
+  - SLC-001
+decision_refs: []
+contract_refs: []
 development_authorization: not_granted
 requires_development_authorization: true
 confirmed_contracts: []

@@ -6,6 +6,14 @@ Canonical artifacts are Markdown, YAML, and Mermaid. Renderers may create HTML o
 
 Use one conceptual contract at all depths. Lean projects may merge Markdown sections; standard projects may use separate files; enterprise and subsystem work may add focused packages. Do not maintain three divergent template sets.
 
+## Storage convention
+
+When the blueprint belongs to an implementation repository, place its canonical root at
+`<project-root>/docs/blueprint/`. Keep `manifest.yaml`, canonical planning artifacts, and the development
+handoff in that directory; subsystem packages may live below it. A standalone blueprint may use its own
+directory with the same root layout. Existing projects may retain another location when `manifest.yaml` and
+its `canonical_files` make the root unambiguous; do not migrate files only to satisfy this convention.
+
 For a small, single-owner application with few rules and no material cross-system boundary, the normal shape is at most three canonical Markdown files plus `manifest.yaml` and the YAML handoff: charter, merged product/solution truth, and concise review. The merged solution may contain one boundary/responsibility view and one fit-for-shape data model. Add another file or view only when it has a distinct owner, review audience, lifecycle, or unresolved risk. This is a default, not a completeness target.
 
 Keep the source compact by ownership: define a decision in one place, refer to its stable ID elsewhere, and let the handoff point to read-first material instead of reproducing it. Reviews contain findings and disposition changes, not a second summary of the blueprint. Applicability and omission records should be brief unless their rationale affects a decision.
@@ -91,9 +99,12 @@ Additional action, artifact, subsystem, source, revision, and validation state m
 
 The handoff must state:
 
+- project name and blueprint status;
 - blueprint and schema versions;
+- handoff status: `draft`, `ready`, or `stale`;
 - exact read-first artifacts;
-- first slice ID and observable outcome;
+- first slice ID and the referenced slice set;
+- referenced decision and contract IDs;
 - confirmed contracts and accepted assumptions;
 - open blockers and decision candidates;
 - validation commands or evidence;
@@ -104,12 +115,19 @@ The handoff must state:
 Minimum shape:
 
 ```yaml
+project_name: example
 blueprint_version: "0.1.0"
+blueprint_status: approved
+handoff_status: ready # draft | ready | stale
 read_first:
   - 00-project-charter.md
   - 03-product-scope.md
   - 05-solution.md
 first_slice_id: SLC-001
+slice_refs:
+  - SLC-001
+decision_refs: []
+contract_refs: []
 confirmed_contracts: []
 accepted_assumptions: []
 open_blockers: []
