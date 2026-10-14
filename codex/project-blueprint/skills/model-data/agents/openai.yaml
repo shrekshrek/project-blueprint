@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model Data"
+  short_description: "Model data shape, ownership, lifecycle, and controls"
+  default_prompt: "Use $model-data for this project planning request."

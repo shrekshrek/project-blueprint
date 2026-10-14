@@ -1,0 +1,4 @@
+interface:
+  display_name: "Define Product Scope"
+  short_description: "Define capabilities, MVP scope, and non-goals"
+  default_prompt: "Use $define-product-scope for this project planning request."
