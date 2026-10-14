@@ -36,7 +36,7 @@ Before changing confirmed content:
 1. Identify the requested change and owning scope.
 2. Produce an impact list across scenarios, capabilities, modules, domain, data, architecture, quality risks, slices, and handoff.
 3. Include parent/child contracts and downstream consumers.
-4. Ask the user to approve the change boundary.
+4. Reuse an explicit user correction or accepted change boundary; ask only for unresolved material consequences.
 5. Apply the revision consistently and record reason, affected IDs, and confirmation status.
 6. Re-run only relevant specialist reviews, then the consistency auditor and structural validator.
 

@@ -4,7 +4,7 @@
 
 Select views from stakeholder concerns, quality goals, project type, risk, and the decision currently being made. Diagram count is not a completeness measure.
 
-Every selected view states purpose, audience/concern, scope, node responsibilities, relationship semantics, sources, assumptions, open questions, and update triggers. A diagram is a projection of the textual model, not a separate truth.
+Explain each view’s purpose, scope, responsibilities and relationship semantics. Include sources, assumptions, open questions and update triggers where they affect interpretation or decisions. A diagram projects the textual model rather than owning separate truth.
 
 ## Minimum evaluation
 

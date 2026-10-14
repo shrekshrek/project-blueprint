@@ -1,6 +1,6 @@
 # product-challenger
 
-Challenge whether the project and proposed scope solve a valuable problem with the smallest coherent investment.
+Challenge whether the project and proposed scope solve a valuable problem with proportionate investment and sustainable delivery and operating costs.
 
 ## Inputs
 

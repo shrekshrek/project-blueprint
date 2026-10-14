@@ -14,7 +14,7 @@ handoff in that directory; subsystem packages may live below it. A standalone bl
 directory with the same root layout. Existing projects may retain another location when `manifest.yaml` and
 its `canonical_files` make the root unambiguous; do not migrate files only to satisfy this convention.
 
-For a small, single-owner application with few rules and no material cross-system boundary, the normal shape is at most three canonical Markdown files plus `manifest.yaml` and the YAML handoff: charter, merged product/solution truth, and concise review. The merged solution may contain one boundary/responsibility view and one fit-for-shape data model. Add another file or view only when it has a distinct owner, review audience, lifecycle, or unresolved risk. This is a default, not a completeness target.
+Organize content by purpose, ownership and reading needs. Merge related material when it remains clear; split it for independent review, lifecycle, complexity or a material concern. File and view counts are outcomes, not planning targets.
 
 Keep the source compact by ownership: define a decision in one place, refer to its stable ID elsewhere, and let the handoff point to read-first material instead of reproducing it. Reviews contain findings and disposition changes, not a second summary of the blueprint. Applicability and omission records should be brief unless their rationale affects a decision.
 
@@ -41,26 +41,31 @@ Create only when they resolve a material concern:
 - subsystem package;
 - MVP slice plan.
 
-For each omitted conditional artifact, record `merged`, `deferred`, or `not_applicable`, with rationale and a revisit trigger where conditions can change.
+Record a merged, deferred or not-applicable disposition only when the omission affects a material decision or future work; keep its reason and any useful revisit trigger.
 
 ## Assertion states
 
-Use exactly:
+For material planning choices use:
 
-- `confirmed`: user-confirmed or supported by cited evidence;
+- `confirmed`: accepted by the user or inherited from an applicable accepted contract;
 - `assumption`: used provisionally with a validation action;
 - `deferred`: intentionally postponed with a revisit trigger;
 - `out_of_scope`: excluded from this scope.
+
+Cited evidence establishes facts and constraints, not acceptance of a proposed solution. Describe facts with
+their sources and verification limits; reserve `confirmed` for accepted choices. Derived retention, retry,
+ownership or failure behavior needs acceptance
+when it materially changes outcomes, risk or cost. Ordinary detail within accepted boundaries may be resolved directly.
 
 ## Stable identity
 
 Assign stable IDs only to concepts referenced across artifacts or revisions. Useful prefixes include actors, scenarios, capabilities, contexts, contracts, entities, quality requirements, risks, decisions, subsystems, and slices. Do not number every paragraph or every diagram node.
 
-Every stable item records name, status, rationale, source references where applicable, and owning scope. Relationships use IDs rather than mutable labels.
+Give referenced items one clear definition, with status, rationale, source and ownership where relevant. Use the document’s existing layout. The validator checks that handoff IDs appear in canonical material outside the handoff; review determines whether their meaning and authority are clear. Relationships use IDs rather than mutable labels.
 
 ## View decision record
 
-Each candidate concern records:
+For a material concern whose disposition affects a decision or later work, record:
 
 - concern and stakeholder;
 - disposition: `selected`, `merged`, `deferred`, or `not_applicable`;
@@ -93,14 +98,14 @@ view_decisions:
 open_blockers: []
 ```
 
-Additional action, artifact, subsystem, source, revision, and validation state may be added without changing these meanings. A deferred view always has a concrete revisit trigger. A not-applicable view has a rationale and should also have a trigger when applicability can change.
+Omit `view_decisions` or use an empty list when there is no material view decision to record. Additional action, artifact, subsystem, source, revision, and validation state may be added without changing these meanings. A deferred view always has a concrete revisit trigger. A not-applicable view has a rationale and should also have a trigger when applicability can change.
 
 ## Handoff
 
 The handoff must state:
 
 - project name and blueprint status;
-- blueprint and schema versions;
+- blueprint version matching the manifest; the manifest owns the schema version;
 - handoff status: `draft`, `ready`, or `stale`;
 - exact read-first artifacts;
 - first slice ID and the referenced slice set;
@@ -143,4 +148,6 @@ requires_development_authorization: true
 
 Set `recommended_workflow.action` to `project-init` only when the intended implementation target is empty or contains no project evidence. Use `project-personalize` when blueprint artifacts, a scaffold, code, configuration, or other project-specific truth already exists there. If the target state is unavailable, ask one focused routing question instead of guessing. The selected action remains a recommendation and is never invoked by Project Blueprint.
 
-Set `blueprint_status: approved` only after the user accepts the blueprint content. Set `development_authorization: granted` only after a separate explicit request to begin or hand off implementation; granting it never causes Project Blueprint to invoke another workflow automatically.
+Keep handoff project, version, approval and authorization aligned with its owning manifest. Read-first paths are relative to the owning blueprint root and must resolve there. Its slice, decision and contract IDs refer to canonical content; the first slice belongs to `slice_refs`. A ready handoff requires approved content and no open blockers in either record. A stale handoff retains its historical version and is context only, never current implementation authority.
+
+Set `blueprint_status: approved` only after the user accepts the content. Development authorization is a separate decision, but may be explicit in the same request. Preserve an existing grant while its scope remains valid; revise it only for a user decision or a change that invalidates that scope. Planning writes authorized blueprint artifacts, not application code; the handoff records authorization without starting implementation.

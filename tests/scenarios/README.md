@@ -2,7 +2,7 @@
 
 These scenarios test whether Project Blueprint routes and scopes planning appropriately. Evaluation inputs and scoring oracles are deliberately separated.
 
-All scenarios enter through `plan-project`. Oracle `expected_actions` lists only specialist actions selected by the manager, so it never repeats `plan-project`.
+All scenarios enter through `plan-project`. Oracle `expected_actions` identifies relevant specialist responsibilities, not a required sequence or call quota. Equivalent coverage may be merged or reused; it never repeats `plan-project`. Discussion-only scenarios judge recommendations and decision boundaries without requiring dispatch.
 
 ## Integrity
 
@@ -26,4 +26,4 @@ A run fails if it invents confirmed facts, silently skips a high-risk concern, c
 
 The deterministic checks validate scenario and oracle structure; they do not execute a model. When canonical routing or multi-role review behavior changes, run `EVAL-01` plus one risk-relevant complex scenario in fresh Claude and Codex conversations. When only one host adapter changes, run those two cases on that host and rely on adapter parity for the unchanged host. Documentation-only changes with no runtime behavior change do not require a model smoke.
 
-For multi-role review changes, record that every applicable role used the same bounded snapshot, returned a terminal report before aggregation, and cited existing IDs or `artifact#section` references without forcing new identifiers. Mutate one selected input before aggregation and confirm the run is invalidated and every applicable role is dispatched again on one new boundary; no old terminal report is reused across snapshots.
+For multi-role review changes, record that every applicable role used the same bounded snapshot, returned a terminal report before aggregation, and cited existing IDs or `artifact#section` references without forcing new identifiers. Mutate one selected input before aggregation and verify dependency-aware invalidation: affected roles rerun; unchanged reports are reused only with evidence that their inputs, assumptions and dependencies remain valid. An uncertain impact requires fresh review.

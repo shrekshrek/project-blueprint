@@ -36,12 +36,12 @@ Five internal support roles provide evidence research, product challenge, domain
 - `plan-project` keeps the user conversation and recommends the next highest-value decision.
 - Planning uses a risk-routed diverge-then-converge loop: it broadens when research or concern coverage can change the direction, then stops after material boundaries and unknowns are closed or explicitly deferred.
 - Inputs already supplied are not asked again.
-- Material statements remain `confirmed`, `assumption`, `deferred`, or `out_of_scope`.
+- Material choices remain `confirmed`, `assumption`, `deferred`, or `out_of_scope`; cited facts support decisions but do not constitute user acceptance.
 - Architecture and data views are selected from stakeholder concerns and risk, not a required count.
 - Small, single-owner projects default to merged, decision-dense artifacts; action count never determines file count.
 - Multi-subsystem projects establish global black-box responsibilities first, then deepen selected scopes without losing parent contracts.
 - Revisions produce an impact list before changing confirmed content.
-- Multi-role readiness review freezes one bounded blueprint input, waits for terminal role reports, and never aggregates results from different snapshot states.
+- Multi-role readiness review freezes one bounded blueprint input, waits for terminal role reports, and reuses completed reports only after verifying validity for the current inputs and dependencies.
 - Markdown, YAML, and Mermaid are canonical. HTML or images may be added later as renderers.
 - Blueprint-content approval and development authorization are separate decisions. The plugin stops at a reviewed handoff and never starts development automatically.
 
@@ -138,7 +138,7 @@ node scripts/build-plugin-packages.cjs --out /empty/output-directory
 - adapter links and manifests are valid;
 - adapters remain thin and host-specific markers do not leak;
 - valid and invalid blueprint fixtures behave deterministically;
-- all eight forward-test inputs and hidden scoring oracles remain complete and reference real actions/roles;
+- all nine forward-test inputs and hidden scoring oracles remain complete and reference real actions/roles;
 - self-contained Claude and Codex packages can be built.
 
 ## Packaging

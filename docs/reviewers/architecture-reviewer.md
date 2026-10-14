@@ -14,7 +14,7 @@ Scenarios, scope/modules, domain/data ownership, quality concerns, architecture 
 - Are trust boundaries, identity, tenancy, and sensitive-data movement visible?
 - Are deployment, scaling, availability, RTO/RPO, and dependency assumptions proportionate and evidence-backed?
 - Are interfaces and cross-system contracts explicit without premature technology detail?
-- Is distribution justified, or would a modular monolith be safer?
+- Does the structure fit existing systems and constraints, and would an alternative reduce delivery, reliability or maintenance risk?
 - Are selected views sufficient for the concern register; are omitted views justified?
 - Which choice is hardest to reverse and what validation reduces its risk?
 

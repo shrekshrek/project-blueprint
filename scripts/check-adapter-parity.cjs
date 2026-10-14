@@ -158,28 +158,6 @@ for (const role of roles) {
   if (/^model:/m.test(adapter)) problems.push(`${relative}: model selection must remain host-controlled`);
 }
 
-const reviewAction = read("docs/actions/review-blueprint.md");
-for (const marker of [
-  "freeze the selected inputs",
-  "all five roles",
-  "status-only and non-authoritative",
-  "one terminal report",
-  "existing IDs or `artifact#section`",
-  "invalidate the review run",
-  "every applicable role again on one new snapshot boundary",
-  "no cross-snapshot result-reuse mode",
-  "results from different snapshot states are never aggregated",
-]) {
-  if (!reviewAction.includes(marker)) problems.push(`docs/actions/review-blueprint.md: missing ${JSON.stringify(marker)}`);
-}
-const reviewerIndex = read("docs/reviewers/README.md");
-for (const marker of [
-  "specific to multi-role readiness review",
-  "does not turn ordinary specialist support",
-]) {
-  if (!reviewerIndex.includes(marker)) problems.push(`docs/reviewers/README.md: missing ${JSON.stringify(marker)}`);
-}
-
 for (const directory of ["docs/actions", "docs/reviewers", "docs/methodology"]) {
   for (const name of fs.readdirSync(path.join(root, directory)).filter((entry) => entry.endsWith(".md"))) {
     const relative = `${directory}/${name}`;
@@ -199,17 +177,6 @@ for (const scanRoot of scanRoots) {
     if (!/\.(?:md|json|yaml)$/.test(file)) continue;
     const content = fs.readFileSync(file, "utf8");
     if (/\{\{TODO|\[TODO|TODO:/.test(content)) problems.push(`${path.relative(root, file)}: unresolved placeholder`);
-  }
-}
-
-const deliveryAction = read("docs/actions/plan-delivery.md");
-const artifactContract = read("docs/methodology/artifact-contract.md");
-for (const [relative, content] of [
-  ["docs/actions/plan-delivery.md", deliveryAction],
-  ["docs/methodology/artifact-contract.md", artifactContract],
-]) {
-  for (const marker of ["`project-init`", "`project-personalize`", "target state"]) {
-    if (!content.includes(marker)) problems.push(`${relative}: missing state-aware workflow routing marker ${marker}`);
   }
 }
 

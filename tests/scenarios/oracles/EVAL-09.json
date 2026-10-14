@@ -1,0 +1,29 @@
+{
+  "id": "EVAL-09",
+  "archetype": "accepted-boundary-maintenance",
+  "expected_actions": [
+    "plan-delivery",
+    "model-data",
+    "review-blueprint"
+  ],
+  "conditional_roles": [
+    "consistency-auditor"
+  ],
+  "required_concerns": [
+    "preserve-valid-approval-and-grant",
+    "evidence-is-not-choice-acceptance",
+    "cross-slice-schema-need",
+    "dependency-aware-review-reuse"
+  ],
+  "forbidden_outputs": [
+    "automatic-authorization-reset",
+    "reconfirm-unchanged-decisions",
+    "vendor-capability-as-user-acceptance",
+    "first-slice-only-physical-model",
+    "reuse-review-with-uncertain-impact",
+    "project-writes",
+    "fact-verification-labeled-confirmed-choice",
+    "provisional-design-equals-temporary-data"
+  ],
+  "evaluation_note": "Discussion only: evaluate the stated decisions, not whether specialist calls occurred. Reuse requires verified inputs, assumptions and dependency validity; uncertain impact requires fresh review."
+}

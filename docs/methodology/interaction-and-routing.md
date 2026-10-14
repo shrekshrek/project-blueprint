@@ -50,6 +50,8 @@ selected scope after exploration and again at convergence; review is not a subst
 Stop only when the remaining unknowns are either immaterial or explicitly recorded as assumptions/deferred items
 with validation and revisit triggers, and the next safe development decision is clear.
 
+Choose approaches by correctness, clarity, feasibility, delivery and verification cost, compatibility and maintenance. A broader redesign may be simpler overall than local patches. Investigate missing facts first; recommend an approach, and discuss alternatives when their consequences materially differ.
+
 ## Next-action selection
 
 Do not force the nine actions into a fixed sequence. Rank unresolved decisions using:
@@ -71,8 +73,8 @@ for the next decision cluster; do not turn the inventory into a questionnaire.
 3. Select the next action and explain the expected decision.
 4. Let the action propose a professional draft before asking for missing input.
 5. Ask one high-impact question, or a tightly related small batch when context makes that more efficient.
-6. Show the resulting `confirmed`, `assumption`, `deferred`, and `out_of_scope` changes.
-7. Obtain correction or confirmation, persist state, and recommend the next action.
+6. Explain material changes and distinguish facts, accepted choices and proposals.
+7. Resolve only consequential open choices, persist useful conclusions, and continue authorized planning; reuse answers already supplied.
 8. Pause safely on request and record the exact resume point.
 
 ## Stop conditions
@@ -87,4 +89,4 @@ Planning may stop when the next development decision is safe, not when every pos
 - a first vertical slice and read-first list;
 - explicit approval of the blueprint content.
 
-Blueprint approval does not authorize development. After approval, offer a separate development-authorization decision; record it without invoking another workflow automatically.
+Blueprint approval alone does not authorize development. Record an explicit grant when supplied, including in the same request as approval; preserve it within its accepted scope. Return the handoff without starting implementation.

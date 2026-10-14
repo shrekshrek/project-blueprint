@@ -19,14 +19,14 @@ Check required artifacts for the selected depth, valid assertion/view statuses, 
 - `evidence-researcher`: volatile/external facts, repository claims, or conflicting sources.
 - `product-challenger`: value, evidence, MVP, or scope risk.
 - `domain-data-reviewer`: domain/data complexity, ownership, persistence, or contracts.
-- `architecture-reviewer`: Standard/Enterprise or material system/quality boundaries.
+- `architecture-reviewer`: material system/quality risks or disputed architecture boundaries.
 - `consistency-auditor`: every final handoff and every major revision.
 
 Run domain-data and architecture review independently on the same stable snapshot when both apply. Give roles only the evidence required by their contract; do not include the expected verdict.
 
 ## Review execution
 
-Before dispatch, finish planned blueprint edits, freeze the selected inputs for this review run, and record applicability across all five roles with a reason for each omitted role. Give every applicable role the same snapshot boundary plus only its bounded evidence. If any selected input changes before aggregation, invalidate the review run and dispatch every applicable role again on one new snapshot boundary. Do not retain an old terminal report merely because its role-specific evidence appears unchanged; this action has no cross-snapshot result-reuse mode.
+Before dispatch, finish planned edits and freeze the selected inputs. Select roles by the risks above; explain omissions only when needed to understand coverage. Give each applicable role the current boundary and its evidence. If inputs change before aggregation, suspend aggregation and inspect the dependency impact. Rerun affected roles and consistency checks on the new boundary. Reuse a completed report only after verifying its inputs, assumptions and dependencies remain valid for that boundary; record the reuse and basis. Uncertain impact requires fresh review. Reuse never substitutes for missing or failed review.
 
 Only inside this multi-role review boundary, progress messages are status-only and non-authoritative. Each role returns one terminal report after completing its bounded scope, citing the reviewed existing IDs or `artifact#section` references and every unverified area. The manager waits for every required terminal report before aggregating findings or mutating the blueprint. This terminal-report rule does not restrict a specialist role invoked by another planning action to support the normal user decision loop.
 
@@ -46,4 +46,4 @@ Snapshot boundary, applicability record, execution/fallback record, reviewed sco
 
 ## Invariants
 
-No role takes over user dialogue; unavailable dispatch is disclosed; no required review is silently skipped; results from different snapshot states are never aggregated; review never marks unsupported content confirmed.
+No role takes over user dialogue; unavailable dispatch is disclosed; no required review is silently skipped; all aggregated findings must be valid for the current boundary; review never marks unsupported content confirmed.

@@ -1,6 +1,6 @@
 # design-architecture
 
-Design the minimum sufficient system structure and runtime behavior for the selected concerns.
+Design coherent system structure and runtime behavior for the selected concerns and quality constraints.
 
 ## Use when
 
@@ -20,10 +20,10 @@ Confirmed scenarios, scope/modules, domain ownership, quality goals, constraints
 2. Evaluate System Context and Container/Building Block L1; merge them only when one view remains clear.
 3. Select conditional views solely when they resolve a listed concern.
 4. Define responsibilities, owners, interfaces, trust boundaries, failure behavior, observability, and rationale in text before or beside diagrams.
-5. Prefer a modular monolith unless distribution is justified by independent deployment, scale, fault, data, security, or organization constraints.
+5. Compare structures against existing systems, deployment, scale, resilience, data, security and team constraints. Choose by total delivery and maintenance cost rather than component count.
 6. For multiple subsystems, establish global landscape and black-box contracts before selected deep dives.
-7. Invoke `architecture-reviewer` for Standard/Enterprise or any high-impact architecture boundary.
-8. Record unselected concerns as merged, deferred, or not applicable with rationale and triggers.
+7. Invoke `architecture-reviewer` for material system/quality risks or disputed architecture boundaries.
+8. Record consequential omissions under the shared artifact contract; focus on their rationale and revisit conditions.
 
 ## Outputs
 

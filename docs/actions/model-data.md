@@ -25,13 +25,13 @@ Scenarios, domain concepts and owners, system responsibilities, data uses, lifec
    - document/chunk/embedding/index for RAG;
    - event schemas and state models for event-driven lifecycle;
    - data flow/lineage for pipelines and governance.
-4. Model a physical schema only for the first implementation slice and mark it provisional.
+4. Detail physical schemas where existing systems, migrations, cross-slice contracts or implementation readiness require them. Distinguish observed schemas, accepted constraints and provisional choices. Provisional means the design is unresolved, not that the table or its data is temporary.
 5. Invoke `domain-data-reviewer` for important persistence, semantic complexity, sensitive data, or cross-system contracts.
 6. Reconcile ownership changes with domain, architecture, and subsystem contracts.
 
 ## Outputs
 
-Selected data model set, definitions, ownership/lifecycle controls, contracts, classification/retention, migration concerns, and provisional first-slice schema when needed.
+Selected data model set, definitions, ownership/lifecycle controls, contracts, classification/retention, migration concerns, and physical schemas at the depth needed for the decision, with unresolved choices identified.
 
 ## Completion
 
@@ -39,4 +39,4 @@ Every material data concept has meaning, owner, lifecycle, and traceability; sel
 
 ## Avoid
 
-ER as the universal model, tables before concepts, framework-generated entities without need, and permanent schema claims before implementation feedback.
+ER as the universal model, tables before concepts, framework-generated entities without need, and unverified schema choices presented as accepted decisions.
