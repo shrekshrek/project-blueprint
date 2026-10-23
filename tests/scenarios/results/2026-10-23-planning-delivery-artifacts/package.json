@@ -1,0 +1,8 @@
+{
+  "name": "syn-scope-evaluation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

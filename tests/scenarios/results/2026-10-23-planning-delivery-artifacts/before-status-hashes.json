@@ -1,0 +1,15 @@
+{
+  "src/page.html": "4dea3a0722734db1313dda7669de60da35f409b6815db8747ab03e02da54ac45",
+  "src/server.js": "0b6396613556fafe0aaa81cdcbd4f756432c903ded0c95947cb6087993740806",
+  "src/directory.js": "0a88650fd1154301950cc8ba74dc6b30cc926f9070d102871e00fc769ce26745",
+  "src/application.js": "291fbbaf75a20b9a473171730ec2e3ee7330390394e2901acaf376a0ea4e82d5",
+  "test/first-slice.test.js": "e3acbf7a2ec367aa9d5ed45d03bb43e796d7babb6e967fda8a2fbec696b2a8df",
+  "docs/specs/current.md": "7b17398edaaff5c29a84177550d916c97c8cd73801c8339508d20e43257703ab",
+  "docs/specs/changes/001-directory-scope-first-slice/spec.md": "23220fa7bac7c0a1256133c3cd4d01f1ffbce160234ede3800ae83bd8791325d",
+  "docs/blueprint/handoff.yaml": "3b41d410e1c60bbfa3ffb085f121dca8d67456eff830ab22e49a1c30087aa4ee",
+  "docs/blueprint/manifest.yaml": "23cdf2c67b66ef7bb5827c3bfc6ff16abdf356bb71c78d9db34a405c0a23f91c",
+  "docs/blueprint/plan.md": "70469464523b3e4a1dfa275e74e3be8caf791dc7ccf43aecb1fa21433b5256ca",
+  "docs/blueprint/review.md": "5baeb64bfd8f68eee9e95cceeaab6f66aeeea6ad283cf912d0eb5f0d3efedcf3",
+  "docs/blueprint/prototype/index.html": "617a6142457d9b5055e5320ddb62cc02ac53b80b9692193c4d20c2ff607c369b",
+  "docs/blueprint/prototype/check.cjs": "2147efb3ca4364a67e2c786caf2b0627ab08054fb43af376ce6a03427ec1a373"
+}

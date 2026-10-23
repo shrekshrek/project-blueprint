@@ -1,0 +1,28 @@
+schema_version: "0.2"
+project_name: syn-directory-scope
+blueprint_version: "0.2.0"
+blueprint_status: approved
+development_authorization: granted
+planning_mode: greenfield
+interaction_mode: context_dump
+current_scope: root
+canonical_files:
+  - plan.md
+  - handoff.yaml
+  - review.md
+view_decisions:
+  - concern_id: ownership-and-permission
+    disposition: merged
+    representation: plan.md
+    rationale: Two module ownership, logical model and runtime rules fit one review unit
+  - concern_id: deployment
+    disposition: deferred
+    representation: plan.md
+    rationale: Synthetic local planning excludes deployment
+    revisit_trigger: Real environment integration is requested
+open_blockers: []
+sources:
+  - ../../AGENTS.md
+  - ../specs/current.md
+  - ../../fixtures/people.json
+authorization_boundary: SLC-001 then user feedback; no continuous execution

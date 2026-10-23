@@ -1,0 +1,34 @@
+{
+  "departments": [
+    {
+      "id": "SYN-D1",
+      "name": "Planning",
+      "parentId": null
+    },
+    {
+      "id": "SYN-D2",
+      "name": "Creative",
+      "parentId": "SYN-D1"
+    }
+  ],
+  "people": [
+    {
+      "id": "SYN-P1",
+      "name": "SYN Alex",
+      "departmentId": "SYN-D1",
+      "managerName": null
+    },
+    {
+      "id": "SYN-P2",
+      "name": "SYN Bo",
+      "departmentId": "SYN-D2",
+      "managerName": "SYN Alex"
+    },
+    {
+      "id": "SYN-P3",
+      "name": "SYN Cai",
+      "departmentId": "SYN-D2",
+      "managerName": null
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+project_name: syn-directory-scope
+blueprint_version: "0.2.0"
+blueprint_status: approved
+handoff_status: ready
+read_first:
+  - plan.md
+  - review.md
+first_slice_id: SLC-001
+slice_refs: [SLC-001, SLC-002]
+decision_refs: [D-IMPORT, D-ADMIN, D-CONSISTENCY, D-AUDIT]
+contract_refs: [CT-IDENTITY, CT-SCOPE, CT-GRANT, CT-BOUNDARY, CT-SNAPSHOT]
+confirmed_contracts: [CT-IDENTITY, CT-SCOPE, CT-GRANT, CT-BOUNDARY, CT-SNAPSHOT]
+accepted_assumptions: []
+open_blockers: []
+decision_candidates: []
+validation:
+  - node /Users/shrekwang/.codex/plugins/cache/project-blueprint/project-blueprint/0.3.2/scripts/validate-blueprint.cjs docs/blueprint
+  - Future implementation uses node --test; prototype is not implementation evidence
+recommended_workflow:
+  next_system: project-workflow
+  action: feature-init
+development_authorization: granted
+requires_development_authorization: true
+authorization_boundary: Stop after SLC-001 for user feedback; SLC-002 not authorized continuously
