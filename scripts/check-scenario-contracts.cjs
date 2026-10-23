@@ -5,7 +5,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const inputRoot = path.join(root, "tests/scenarios/inputs");
 const oracleRoot = path.join(root, "tests/scenarios/oracles");
-const expected = Array.from({ length: 9 }, (_, index) => `EVAL-${String(index + 1).padStart(2, "0")}`);
+const expected = Array.from({ length: 11 }, (_, index) => `EVAL-${String(index + 1).padStart(2, "0")}`);
 const actions = new Set(fs.readdirSync(path.join(root, "docs/actions")).filter((name) => name.endsWith(".md") && name !== "README.md").map((name) => name.slice(0, -3)));
 const roles = new Set(fs.readdirSync(path.join(root, "docs/reviewers")).filter((name) => name.endsWith(".md") && name !== "README.md").map((name) => name.slice(0, -3)));
 const errors = [];
@@ -39,4 +39,4 @@ if (errors.length) {
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
-console.log("Forward scenario contracts OK: 9 isolated inputs + 9 scoring oracles.");
+console.log("Forward scenario contracts OK: 11 isolated inputs + 11 scoring oracles.");

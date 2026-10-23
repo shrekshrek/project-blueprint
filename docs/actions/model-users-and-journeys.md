@@ -14,7 +14,7 @@ Charter, user evidence, roles, current process, tasks/JTBD, constraints, and rel
 
 1. Identify primary, secondary, operational, administrative, and external-system actors.
 2. Write scenario cards with trigger, goal, preconditions, happy path, alternatives/failures, information needs, evidence, and success signal.
-3. Trace high-value or high-risk scenarios as journeys.
+3. Trace high-value or high-risk scenarios as journeys. Use the [decision-aid guidance](../methodology/interaction-and-routing.md#decision-aids) when a layout or interaction question is easier to confirm by trying it.
 4. Add service-blueprint lanes only when frontstage, backstage, support processes, handoffs, or multiple systems materially shape delivery.
 5. Mark unsupported personas or journey steps as assumptions; ask for decisions rather than demographic decoration.
 6. Feed terminology and ownership conflicts to `model-domain`; feed module needs to `define-product-scope`.

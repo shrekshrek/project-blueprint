@@ -10,7 +10,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 - Five conditional internal support roles: evidence research, product challenge, domain/data review, architecture review, and consistency audit.
 - One canonical methodology core shared by native Claude Code and Codex adapters.
 - Inputs may be an idea, requirements, research, an existing blueprint, or an unstable project needing re-baselining.
-- Canonical outputs are composable Markdown, YAML, and Mermaid artifacts.
+- Canonical outputs are composable Markdown, YAML, and Mermaid artifacts; optional decision aids support layout, interaction or visual choices without replacing the accepted textual contract.
 - When attached to an implementation repository, canonical artifacts default to `docs/blueprint/`; the manifest remains the root index and existing projects are not migrated solely for layout consistency.
 - Artifact density follows project risk and ownership: lean work merges outputs, while focused files or subsystem packages require a real boundary.
 - Planning covers feasibility, users/scenarios, journeys, capabilities/modules, domain ownership, concern-driven architecture/data views, quality risks, subsystem depth, revision impact, vertical slices, and development handoff.
@@ -37,7 +37,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 
 ## Deferred
 
-- Interactive HTML blueprint renderer and visual editor.
+- Built-in interactive HTML blueprint renderer and visual editor (optional standalone decision aids do not require either).
 - Database-backed or long-running planning service.
 - Importers for arbitrary existing requirements and architecture tools.
 - Industry-specific reviewer packs.

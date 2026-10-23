@@ -68,14 +68,15 @@ for the next decision cluster; do not turn the inventory into a questionnaire.
 
 ## Interaction loop
 
-1. Ingest the invocation and existing blueprint without repeating answered questions.
-2. Summarize current truth, assumptions, conflicts, and scope.
-3. Select the next action and explain the expected decision.
-4. Let the action propose a professional draft before asking for missing input.
-5. Ask one high-impact question, or a tightly related small batch when context makes that more efficient.
-6. Explain material changes and distinguish facts, accepted choices and proposals.
-7. Resolve only consequential open choices, persist useful conclusions, and continue authorized planning; reuse answers already supplied.
-8. Pause safely on request and record the exact resume point.
+Follow the [plan-project workflow](../actions/plan-project.md#workflow). Within the selected action, propose a professional draft before asking for missing input; distinguish facts, accepted choices and proposals when explaining material changes. Continue authorized planning after resolving consequential choices, and record the exact resume point when the user pauses.
+
+## Decision aids
+
+Choose the cheapest representation that helps the user decide a material question: prose/tables for rules and trade-offs, diagrams for relationships or flows, lightweight HTML for layout and interaction, and static visual studies for aesthetic direction. A UI topic alone does not require a prototype.
+
+`plan-project` owns this choice and user confirmation; the relevant specialist may create the aid using available design/browser tools or skills. No particular tool or renderer is required. Reuse existing interface conventions and show only the flow and states needed for the decision, using synthetic data. Identify the decision, mocked behavior and unverified constraints; a clickable prototype does not prove backend, permission or production readiness.
+
+Keep aids separate from application code. Capture accepted behavior, exclusions and unresolved choices in the owning canonical artifact and reference the aid when useful; prototype approval is not blanket approval of incidental details. Hand these decisions to implementation. Ordinary layout repairs stay with the implementation workflow; changes to outcomes, journeys, permissions or system ownership return to the affected planning decision. Do not maintain a second application or impose a prototype approval stage on every feature.
 
 ## Stop conditions
 

@@ -1,0 +1,32 @@
+{
+  "id": "EVAL-10",
+  "archetype": "source-maintenance-and-existing-target",
+  "expected_actions": [
+    "model-data",
+    "model-users-and-journeys",
+    "plan-delivery"
+  ],
+  "conditional_roles": [
+    "domain-data-reviewer"
+  ],
+  "required_concerns": [
+    "source-to-effective-fact-gap",
+    "initialization-and-ongoing-maintenance",
+    "ambiguity-and-manual-source-conflict",
+    "downstream-update-and-revocation",
+    "first-observable-cross-system-outcome",
+    "existing-baseline-feature-resume",
+    "accepted-contract-revision-route",
+    "partial-or-custom-baseline-without-other-evidence-routes-to-personalize"
+  ],
+  "forbidden_outputs": [
+    "interface-tests-prove-usable-tree",
+    "consumer-guesses-authoritative-relations",
+    "unapproved-real-data-writes",
+    "automatic-project-personalize-for-maintained-target",
+    "horizontal-foundations-only-delivery",
+    "project-init-overwrites-partial-or-custom-baseline",
+    "feature-init-assumes-incomplete-baseline-is-applicable"
+  ],
+  "evaluation_note": "Discussion only. Judge actual recommendations and boundaries; action and role lists are responsibilities, not dispatch quotas. Do not supply this oracle to the planning agent."
+}

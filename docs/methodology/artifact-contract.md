@@ -2,7 +2,7 @@
 
 ## Principles
 
-Canonical artifacts are Markdown, YAML, and Mermaid. Renderers may create HTML or images, but rendered output is never the only source of truth.
+Canonical artifacts are Markdown, YAML, and Mermaid. Optional decision aids may use HTML, images or PDF; they support communication, while accepted behavior remains in the canonical source. They are not production deliverables or proof of implementation.
 
 Use one conceptual contract at all depths. Lean projects may merge Markdown sections; standard projects may use separate files; enterprise and subsystem work may add focused packages. Do not maintain three divergent template sets.
 
@@ -102,22 +102,7 @@ Omit `view_decisions` or use an empty list when there is no material view decisi
 
 ## Handoff
 
-The handoff must state:
-
-- project name and blueprint status;
-- blueprint version matching the manifest; the manifest owns the schema version;
-- handoff status: `draft`, `ready`, or `stale`;
-- exact read-first artifacts;
-- first slice ID and the referenced slice set;
-- referenced decision and contract IDs;
-- confirmed contracts and accepted assumptions;
-- open blockers and decision candidates;
-- validation commands or evidence;
-- current `development_authorization`;
-- `requires_development_authorization: true`;
-- recommended next system may be `project-workflow`, but never auto-invoke it; choose its action from the intended implementation target rather than treating `project-init` as a universal next step.
-
-Minimum shape:
+Use the following minimum handoff shape. Its blueprint version matches the manifest, which owns the schema version. State validation commands or evidence, exact read-first artifacts and the referenced slice/decision/contract IDs; status and authorization constraints follow below.
 
 ```yaml
 project_name: example
@@ -146,8 +131,15 @@ development_authorization: not_granted
 requires_development_authorization: true
 ```
 
-Set `recommended_workflow.action` to `project-init` only when the intended implementation target is empty or contains no project evidence. Use `project-personalize` when blueprint artifacts, a scaffold, code, configuration, or other project-specific truth already exists there. If the target state is unavailable, ask one focused routing question instead of guessing. The selected action remains a recommendation and is never invoked by Project Blueprint.
+Choose `recommended_workflow.action` from both the intended target's working baseline and the task:
 
-Keep handoff project, version, approval and authorization aligned with its owning manifest. Read-first paths are relative to the owning blueprint root and must resolve there. Its slice, decision and contract IDs refer to canonical content; the first slice belongs to `slice_refs`. A ready handoff requires approved content and no open blockers in either record. A stale handoff retains its historical version and is context only, never current implementation authority.
+- `project-init`: no baseline or project evidence exists.
+- `project-personalize`: the working baseline needs repair or adaptation because its destinations are partial, custom or otherwise occupied, even without other project evidence; also use it when project evidence exists but the baseline is missing or needs project-specific adaptation. A maintained, applicable baseline does not need personalization merely because it is customized.
+- `feature-init`: an applicable working baseline exists and implementation can start or resume within accepted scope; reuse a compatible active record.
+- `spec-revise`: an accepted active feature contract must change to incorporate the approved revision.
 
-Set `blueprint_status: approved` only after the user accepts the content. Development authorization is a separate decision, but may be explicit in the same request. Preserve an existing grant while its scope remains valid; revise it only for a user decision or a change that invalidates that scope. Planning writes authorized blueprint artifacts, not application code; the handoff records authorization without starting implementation.
+Read available target evidence before asking; ask one focused question only if missing state changes the route. Do not reinitialize or personalize a maintained project just because it has code or a blueprint. The selected action remains a recommendation and is never invoked by Project Blueprint.
+
+Use `draft` while planning is incomplete, `ready` for an approved handoff without blockers, and `stale` when a later revision invalidates it. Keep handoff project, version, approval and authorization aligned with its owning manifest. Read-first paths are relative to the owning blueprint root and must resolve there. Its slice, decision and contract IDs refer to canonical content; the first slice belongs to `slice_refs`. A ready handoff requires approved content and no open blockers in either record. A stale handoff retains its historical version and is context only, never current implementation authority.
+
+Set `blueprint_status: approved` only after the user accepts the content. Development authorization is a separate decision, but may be explicit in the same request. Default to `not_granted` when no valid grant exists. Preserve an existing grant while its scope remains valid; revise it only for a user decision or a change that invalidates that scope. Planning writes authorized blueprint artifacts, not application code; the handoff records authorization without starting implementation.

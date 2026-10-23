@@ -1,0 +1,29 @@
+{
+  "id": "EVAL-11",
+  "archetype": "decision-aid-and-interface-simplification",
+  "expected_actions": [
+    "model-users-and-journeys",
+    "define-product-scope"
+  ],
+  "conditional_roles": [
+    "product-challenger"
+  ],
+  "required_concerns": [
+    "core-tasks-before-panels",
+    "simpler-layout-alternative",
+    "appropriate-optional-visual-aid",
+    "existing-interface-conventions",
+    "mock-versus-verified-boundary",
+    "canonical-accepted-decisions",
+    "ordinary-layout-work-stays-in-implementation"
+  ],
+  "forbidden_outputs": [
+    "all-six-panels-by-default",
+    "mandatory-prototype-for-every-feature",
+    "specific-design-tool-required",
+    "prototype-proves-permissions",
+    "unrequested-file-writes",
+    "every-layout-fix-requires-rebaseline"
+  ],
+  "evaluation_note": "Discussion only. Judge actual recommendations and boundaries; action and role lists are responsibilities, not dispatch quotas. Do not supply this oracle to the planning agent."
+}
