@@ -1,0 +1,15 @@
+{
+  "name": "project-blueprint",
+  "owner": {
+    "name": "shrek.wang"
+  },
+  "metadata": {
+    "description": "Evidence-backed project inception for AI-ready development blueprints"
+  },
+  "plugins": [
+    {
+      "name": "project-blueprint",
+      "source": "./claude/project-blueprint"
+    }
+  ]
+}
