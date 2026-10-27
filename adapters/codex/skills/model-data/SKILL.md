@@ -1,6 +1,6 @@
 ---
 name: model-data
-description: "Select and define conceptual, relational, graph, RAG, event, state, flow, or lineage models according to data shape, ownership, lifecycle, and risk."
+description: "Model data ownership, representations and lifecycle during Blueprint planning or explicit project-level data planning; not ordinary feature schema changes."
 ---
 
 # model-data (Codex)

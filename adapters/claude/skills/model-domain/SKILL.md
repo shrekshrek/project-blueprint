@@ -1,6 +1,6 @@
 ---
 name: model-domain
-description: Clarify domain language, business rules, ownership, subdomains, bounded contexts, and cross-context contracts when domain complexity warrants it.
+description: "Clarify domain rules and ownership during Blueprint planning or explicit project-level domain planning; not ordinary feature rules or internal refactoring."
 ---
 
 # model-domain

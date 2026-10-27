@@ -8,6 +8,7 @@ Runtime skills must read the corresponding action completely and may add only ho
 
 - `plan-project` owns the user conversation, state transitions, conflict explanation, and final approval.
 - Other actions may also be invoked directly. When invoked directly, they update only their own scope and return a next-action recommendation.
+- Specialist actions apply within active Blueprint planning or an explicitly requested project-level planning task. Ordinary feature design, schema changes and internal refactoring in a stable project stay in its implementation workflow; technical subject matter alone does not trigger Blueprint.
 - Track material choices using the [assertion states](../methodology/artifact-contract.md#assertion-states); cite facts separately with their verification limits.
 - Do not re-ask information already present in the invocation or blueprint.
 - Ask only questions that can change a material decision; normally ask one high-impact question at a time.

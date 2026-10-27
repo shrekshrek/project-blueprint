@@ -1,6 +1,6 @@
 ---
 name: design-architecture
-description: Design a concern-driven, minimum sufficient system architecture and select context, building-block, runtime, security, deployment, resilience, or other views only when needed.
+description: "Design system boundaries and architecture views during Blueprint planning or explicit project-level architecture planning; not ordinary feature design or internal refactoring."
 ---
 
 # design-architecture

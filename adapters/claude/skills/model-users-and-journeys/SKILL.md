@@ -1,6 +1,6 @@
 ---
 name: model-users-and-journeys
-description: Model actors, jobs, scenarios, journeys, failure paths, and conditional service-blueprint lanes when user or operational workflows shape product decisions.
+description: "Model users and journeys during Blueprint planning or explicit project-level journey planning; not ordinary feature interaction or layout work."
 ---
 
 # model-users-and-journeys

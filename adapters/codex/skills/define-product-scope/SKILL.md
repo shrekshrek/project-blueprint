@@ -1,6 +1,6 @@
 ---
 name: define-product-scope
-description: "Define capabilities, modules, MVP, non-goals, success signals, and acceptance boundaries from validated outcomes and scenarios."
+description: "Define project capabilities, MVP and non-goals during Blueprint planning or explicit project-level scope planning; not ordinary feature scope changes."
 ---
 
 # define-product-scope (Codex)

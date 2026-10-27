@@ -4,7 +4,7 @@ Establish whether the project is worth pursuing and what decision the blueprint 
 
 ## Use when
 
-Value, desired outcome, sponsor, constraints, feasibility, evidence, or success criteria are unclear or disputed. It may be skipped when an accepted charter covers the same scope and has not materially changed.
+Within Blueprint planning or an explicit project-framing request, value, desired outcome, sponsor, constraints, feasibility, evidence, or success criteria are unclear or disputed. Open-ended inception starts with `plan-project`. It may be skipped when an accepted charter covers the same scope and has not materially changed.
 
 ## Inputs
 

@@ -1,6 +1,6 @@
 ---
 name: frame-project
-description: "Frame a software project before solution design by clarifying the problem, outcomes, evidence, constraints, feasibility, success measures, and go/research/narrow/stop decision."
+description: "Frame project value, feasibility and constraints within Blueprint planning or an explicit project-framing request; open-ended project inception belongs to plan-project, not this specialist."
 ---
 
 # frame-project (Codex)

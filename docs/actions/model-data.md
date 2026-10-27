@@ -4,7 +4,7 @@ Choose data representations that match the project's information shape, ownershi
 
 ## Use when
 
-The system persists, exchanges, governs, migrates, retrieves, or derives material information. It may be not applicable for a stateless utility with no exchanged state.
+Within the shared Blueprint applicability boundary, the system persists, exchanges, governs, migrates, retrieves, or derives material information. It may be not applicable for a stateless utility with no exchanged state.
 
 ## Required reference
 

@@ -4,7 +4,7 @@ Design coherent system structure and runtime behavior for the selected concerns 
 
 ## Use when
 
-Every software project needs at least a boundary and primary responsibility evaluation. Depth increases for integrations, security, availability, scale, multiple runtimes, or high-risk internals.
+Within the shared Blueprint applicability boundary, evaluate the project’s boundary and primary responsibilities. Depth increases for integrations, security, availability, scale, multiple runtimes, or high-risk internals.
 
 ## Required reference
 
