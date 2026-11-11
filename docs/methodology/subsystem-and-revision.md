@@ -37,10 +37,10 @@ Before changing confirmed content:
 2. Produce an impact list across scenarios, capabilities, modules, domain, data, architecture, quality risks, slices, and handoff.
 3. Include parent/child contracts and downstream consumers.
 4. Reuse an explicit user correction or accepted change boundary; ask only for unresolved material consequences.
-5. Apply the revision consistently and record reason, affected IDs, and confirmation status.
+5. Update the decision in its owning section and align affected references. Keep the current decision, exclusions, authorization limits and unresolved questions readable without reconstructing earlier versions.
 6. Re-run only relevant specialist reviews, then the consistency auditor and structural validator.
 
-Do not build an event-sourcing system for documentation. Keep the current blueprint, concise revision history, and Git history.
+Condense superseded wording into a brief history entry with the reason, affected IDs, confirmation status and any evidence needed to interpret the change. Use Git history for earlier wording when available.
 
 ## Required impact closure
 

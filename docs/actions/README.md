@@ -6,6 +6,8 @@ Runtime skills must read the corresponding action completely and may add only ho
 
 ## Shared conventions
 
+Read supporting references only for the current decision. For a section link, read the heading and its subsections. Reuse unchanged material already in context and follow further links only when the current action needs them.
+
 - `plan-project` owns the user conversation, state transitions, conflict explanation, and final approval.
 - Other actions may also be invoked directly. When invoked directly, they update only their own scope and return a next-action recommendation.
 - Specialist actions apply within active Blueprint planning or an explicitly requested project-level planning task. Ordinary feature design, schema changes and internal refactoring in a stable project stay in its implementation workflow; technical subject matter alone does not trigger Blueprint.
@@ -14,8 +16,7 @@ Runtime skills must read the corresponding action completely and may add only ho
 - Ask only questions that can change a material decision; normally ask one high-impact question at a time.
 - Keep planning economical, not artificially small: explore all applicable material concerns before converging, use one decision cluster per loop, and stop only after remaining unknowns are explicitly deferred or immaterial.
 - Record omissions when their rationale or revisit trigger matters to a decision, risk or handoff.
-- Write each decision once in its owning artifact and reference its stable ID elsewhere. Do not repeat the same background, scope, or rationale to make every file self-contained.
-- Match artifact density to project risk. Merge related action outputs when that improves clarity; separate files are justified by independent ownership, review, lifecycle, or material complexity, not by action count.
+- When organizing decisions or files, follow the [storage convention](../methodology/artifact-contract.md#storage-convention). When changing confirmed content, apply the [revision protocol](../methodology/subsystem-and-revision.md#revision-protocol) and its impact closure for major subsystem changes.
 - Planning stops at an approved AI-ready blueprint and handoff. Starting implementation requires explicit development authorization distinct from content approval; preserve it when already supplied.
 
 | Action | Decision boundary |

@@ -17,7 +17,7 @@ Manifest, charter, scenarios/journeys, capabilities/modules, domain/data/archite
 - Stable IDs and statuses agree across artifacts.
 - Consequential omissions retain their rationale and useful revisit triggers.
 - Child blueprint inherits parent contracts and does not silently override them.
-- A revision propagates through its dependency closure and leaves unaffected areas unchanged.
+- A revision reaches affected dependencies, leaves unrelated areas unchanged and makes the current decision and its authorization clear without reconstructing history.
 
 ## Output
 

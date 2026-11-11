@@ -25,7 +25,7 @@ Track at least:
 - latest recommendation and paused/resume point;
 - blueprint approval, development authorization, and handoff status.
 
-Also decide artifact density before generating files. Prefer merged artifacts when one owner and one review audience can understand them together. Split only for a real boundary such as independent ownership, subsystem depth, specialized review, or a separately evolving contract. Reassess density after review and remove duplicate restatements before handoff.
+Apply the [storage convention](artifact-contract.md#storage-convention) before creating files and revisit their organization after review.
 
 ## Planning economy
 

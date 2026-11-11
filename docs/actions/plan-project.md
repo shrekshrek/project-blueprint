@@ -13,7 +13,8 @@ Do not use for ordinary feature planning inside a stable project.
 
 ## Required references
 
-Read all four files in `docs/methodology/` and the action spec for any specialist action before invoking it.
+Use the relevant sections of [interaction and routing](../methodology/interaction-and-routing.md) to start or resume planning. Consult the [artifact contract](../methodology/artifact-contract.md) when creating or updating blueprint records.
+Use [view selection](../methodology/view-selection.md) when choosing views and [subsystem planning and revision](../methodology/subsystem-and-revision.md) when planning subsystems or revising confirmed decisions. Read the selected specialist action before invoking it.
 
 ## Inputs
 
@@ -23,7 +24,7 @@ User context, optional existing blueprint, repository evidence, preferred intera
 
 1. Detect `greenfield`, `rebaseline`, or `review`; ingest existing answers and evidence.
 2. Summarize current truth, assumptions, conflicts, exclusions, blockers, and current scope.
-3. Choose an artifact-density strategy from project risk and ownership, then select specialist actions for the open decisions. An action may update a merged artifact; action count never determines file count.
+3. Choose where the open decisions belong and select the specialist actions they need.
 4. Select the unresolved decision with the highest impact, uncertainty, irreversibility, cross-boundary reach, or blocking effect.
 5. Explain the recommended next action and invoke it with bounded inputs. Keep broader discovered decisions as an internal inventory or concise context; ask the user only for the next decision cluster.
 6. Persist established facts and accepted choices at useful conclusions. Present unresolved material choices for decision; reuse explicit answers and authorization.
@@ -47,5 +48,4 @@ The blueprint is sufficient for the next safe development decision and the user 
 - Do not mark unsupported decisions `confirmed`.
 - Do not expand every subsystem automatically.
 - Do not confuse planning economy with skipping discovery: cover applicable material concerns and research before converging, while rejecting speculative completeness that cannot change a decision or reduce a material risk.
-- Do not create one file per action or restate owned decisions in the handoff and review.
 - Write authorized blueprint documents in the selected root; leave application code and runtime configuration unchanged.
