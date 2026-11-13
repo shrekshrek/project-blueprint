@@ -14,6 +14,8 @@ handoff in that directory; subsystem packages may live below it. A standalone bl
 directory with the same root layout. Existing projects may retain another location when `manifest.yaml` and
 its `canonical_files` make the root unambiguous; do not migrate files only to satisfy this convention.
 
+Link to an existing diagram when it already explains the decision. Embed a new diagram when possible in the Blueprint document that owns the decision. Save standalone HTML beside that document and link to it with a relative path.
+
 Organize content by project risk, purpose, ownership and reading needs. Merge related material when it remains clear; split it for independent review, lifecycle, complexity or a material concern. File and view counts are outcomes, not planning targets.
 
 Keep the source compact by ownership: define a decision in one place, refer to its stable ID elsewhere, and let the handoff point to read-first material instead of reproducing it. Reviews contain findings and disposition changes, not a second summary of the blueprint. Applicability and omission records should be brief unless their rationale affects a decision.

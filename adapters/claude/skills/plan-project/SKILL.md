@@ -1,6 +1,6 @@
 ---
 name: plan-project
-description: Adaptively create, resume, revise, or review an AI-ready project blueprint before implementation. Use for new project inception, re-baselining a chaotic project, multi-subsystem planning, or development-readiness review; do not use for ordinary feature work in a stable project.
+description: Use when two or more features need one shared decision, such as who owns data or when a version is fixed. Resolve just that decision and stop. Also create, resume, revise or review project blueprints for inception, re-baselining, multi-subsystem planning or development readiness. Ordinary feature work using settled rules stays in Workflow.
 ---
 
 # plan-project
