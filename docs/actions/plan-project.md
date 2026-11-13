@@ -6,6 +6,7 @@ Adaptive manager for creating, resuming, revising, or reviewing an AI-ready proj
 
 - a software project starts from an idea or broad requirements;
 - an existing project needs re-baselining after scope or schema churn;
+- onboarding or feature discovery exposes a project-level decision shared by several features;
 - a partial blueprint needs to resume;
 - the user wants readiness review without starting implementation.
 
@@ -22,6 +23,10 @@ User context, optional existing blueprint, repository evidence, preferred intera
 
 ## Workflow
 
+When asked only to resolve a shared decision, show the affected features, proposed rule and consequences with a brief example or table. If a diagram would make the choice clearer, [choose the view that answers the open question](../methodology/view-selection.md#conditional-catalog). Ask about the material choice still open. Once settled, update its existing owner when authorized, or return the conclusion in conversation. Stop there. A change to an accepted Blueprint still follows its revision protocol, including affected reviews and handoff validity. Create a new manifest and development handoff only when delivering a blueprint.
+
+For a project blueprint:
+
 1. Detect `greenfield`, `rebaseline`, or `review`; ingest existing answers and evidence.
 2. Summarize current truth, assumptions, conflicts, exclusions, blockers, and current scope.
 3. Choose where the open decisions belong and select the specialist actions they need.
@@ -35,11 +40,11 @@ User context, optional existing blueprint, repository evidence, preferred intera
 
 ## Outputs
 
-Updated blueprint state, action/applicability record, artifact/view decisions, revision history when applicable, review result, and development handoff.
+For a bounded decision, return the decision or remaining blocker and its source when available. For a project blueprint, return updated blueprint state, action/applicability record, artifact/view decisions, revision history when applicable, review result, and development handoff.
 
 ## Completion
 
-The blueprint is sufficient for the next safe development decision and the user has explicitly approved its content. Development authorization may remain `not_granted`; completeness is not measured by executing every action.
+A bounded request ends when the user can act on the agreed rule or see what blocks it. A project blueprint is sufficient for the next safe development decision and the user has explicitly approved its content. Development authorization may remain `not_granted`; completeness is not measured by executing every action.
 
 ## Invariants
 
