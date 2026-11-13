@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frame Project"
+  short_description: "Validate project value, feasibility, and constraints"
+  default_prompt: "Use $frame-project for this project planning request."
