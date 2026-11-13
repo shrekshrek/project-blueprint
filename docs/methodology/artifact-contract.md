@@ -14,7 +14,7 @@ handoff in that directory; subsystem packages may live below it. A standalone bl
 directory with the same root layout. Existing projects may retain another location when `manifest.yaml` and
 its `canonical_files` make the root unambiguous; do not migrate files only to satisfy this convention.
 
-Link to an existing diagram when it already explains the decision. Embed a new diagram when possible in the Blueprint document that owns the decision. Save standalone HTML beside that document and link to it with a relative path.
+Link to an existing diagram when it already explains the decision. Embed a new diagram when possible in the Blueprint document that owns the decision. Generate and validate standalone diagrams in a temporary directory outside the project, then copy only the final HTML beside that document and link to it with a relative path.
 
 Organize content by project risk, purpose, ownership and reading needs. Merge related material when it remains clear; split it for independent review, lifecycle, complexity or a material concern. File and view counts are outcomes, not planning targets.
 
