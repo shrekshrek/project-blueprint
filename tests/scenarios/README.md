@@ -6,7 +6,7 @@ All scenarios enter through `plan-project`. Oracle `expected_actions` identifies
 
 ## Integrity
 
-- Give the planning agent only one file from `inputs/`, the installed plugin, and explicitly allowed project evidence.
+- Give the planning agent only one file from `inputs/`, the installed skills, and explicitly allowed project evidence.
 - Do not give it `oracles/`, known defects, expected action order, or a previous run.
 - Use a fresh conversation for each host and scenario.
 - Store raw transcripts and generated artifacts outside the oracle directory.
@@ -24,6 +24,6 @@ A run fails if it invents confirmed facts, silently skips a high-risk concern, c
 
 ## Release model smoke
 
-The deterministic checks validate scenario and oracle structure; they do not execute a model. When canonical routing or multi-role review behavior changes, run `EVAL-01` plus one risk-relevant complex scenario in fresh Claude and Codex conversations. When only one host adapter changes, run those two cases on that host and rely on adapter parity for the unchanged host. Documentation-only changes with no runtime behavior change do not require a model smoke.
+The deterministic checks validate scenario and oracle structure; they do not execute a model. When canonical routing or multi-role review behavior changes, run `EVAL-01` plus one risk-relevant complex scenario in fresh Codex and DeepSeek Harness conversations. Documentation-only changes with no runtime behavior change do not require a model smoke.
 
 For multi-role review changes, record that every applicable role used the same bounded snapshot, returned a terminal report before aggregation, and cited existing IDs or `artifact#section` references without forcing new identifiers. Mutate one selected input before aggregation and verify dependency-aware invalidation: affected roles rerun; unchanged reports are reused only with evidence that their inputs, assumptions and dependencies remain valid. An uncertain impact requires fresh review.

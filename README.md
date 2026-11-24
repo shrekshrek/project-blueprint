@@ -1,6 +1,6 @@
 # Project Blueprint
 
-Project Blueprint is a cross-tool planning plugin for the work that should happen **before implementation starts**. It guides a user from an uncertain idea or unstable existing project to an evidence-backed, AI-readable blueprint without forcing every project through the same questionnaire or diagram checklist.
+Project Blueprint is a set of cross-tool planning skills for the work that should happen **before implementation starts**. It guides a user from an uncertain idea or unstable existing project to an evidence-backed, AI-readable blueprint without forcing every project through the same questionnaire or diagram checklist.
 
 ```text
 project idea or unstable project
@@ -13,7 +13,7 @@ project-blueprint
 project-workflow or another implementation process (only after user approval)
 ```
 
-## What changed in v0.3
+## Planning skills
 
 The original single `$plan-project` prototype is now a manager over nine focused planning skills:
 
@@ -43,7 +43,7 @@ Five internal support roles provide evidence research, product challenge, domain
 - Revisions produce an impact list before changing confirmed content.
 - Multi-role readiness review freezes one bounded blueprint input, waits for terminal role reports, and reuses completed reports only after verifying validity for the current inputs and dependencies.
 - Markdown, YAML, and Mermaid are canonical. HTML or images may be added later as renderers.
-- Blueprint-content approval and development authorization are separate decisions. The plugin stops at a reviewed handoff and never starts development automatically.
+- Blueprint-content approval and development authorization are separate decisions. Blueprint stops at a reviewed handoff and never starts development automatically.
 
 ## Repository layout
 
@@ -51,16 +51,15 @@ Five internal support roles provide evidence research, product challenge, domain
 docs/actions/                 canonical contracts for 9 user skills
 docs/reviewers/               canonical contracts for 5 internal roles
 docs/methodology/             routing, artifacts, view selection, subsystem revision
-adapters/claude/              Claude Code skills, agents, and manifest
-adapters/codex/               Codex skills and manifest
-scripts/                      parity, packaging, and blueprint validation
+entries/                      portable entry points for the nine skills
+scripts/                      packaging, scenario checks, and blueprint validation
 tests/fixtures/               deterministic validator fixtures
 tests/scenarios/              isolated forward-test inputs and scoring oracles
 docs/specs/                   current product truth
 docs/adr/                     durable cross-feature architecture decisions
 ```
 
-The canonical method is maintained once. Claude and Codex adapters contain only host-specific loading and subagent instructions.
+Each skill loads its canonical action and the roles applicable to that decision.
 
 ## Blueprint location
 
@@ -81,76 +80,45 @@ the same directory.
 
 ## Install
 
-Install from this GitHub repository through the native marketplace commands.
-
-Claude Code:
-
-```text
-/plugin marketplace add shrekshrek/project-blueprint
-/plugin install project-blueprint@project-blueprint
-```
-
-Codex:
+Use Node.js 22.20 or later for the skills CLI. Install the nine Agent Skills from the release branch. For local Codex and DeepSeek Harness using their default shared user skill directory:
 
 ```bash
-codex plugin marketplace add shrekshrek/project-blueprint
-codex plugin add project-blueprint@project-blueprint
+npx skills add https://github.com/shrekshrek/project-blueprint/tree/skills-dist --skill '*' --agent codex --global --copy
 ```
 
-To update later, refresh the marketplace and plugin, then start a new task so the refreshed skills are loaded:
+For Claude Code, add `--agent claude-code` to the same command. Local Cursor can discover the shared skills. Omit `--global` for a project installation. Check existing skills of the same name before replacing them. Re-run the command with the same scope and clients to update. For an unattended install, append `--yes` after checking the scope and names.
+
+Open a fresh chat and invoke `plan-project`. Check the version under `metadata.version` in its installed `SKILL.md`. Independent reviews require a host with subagent support or the fallback allowed by the selected action.
+
+### Migrating from the marketplace plugin
+
+In each client where the old plugin is installed, remove its entry and dedicated marketplace, then run the install command above. Use the original installation scope for Claude Code (default: user).
 
 ```bash
-claude plugin marketplace update project-blueprint
-claude plugin update project-blueprint@project-blueprint
-codex plugin marketplace upgrade project-blueprint
-codex plugin add project-blueprint@project-blueprint
+# Codex
+codex plugin remove project-blueprint@project-blueprint
+codex plugin marketplace remove project-blueprint
+
+# Claude Code
+claude plugin uninstall project-blueprint@project-blueprint
+claude plugin marketplace remove project-blueprint
 ```
 
-The primary entry point is `$plan-project`; `$review-blueprint` performs a focused readiness review.
+In a new chat, check that `plan-project` resolves to the skill directory from the new installation. Project-owned documents and rules stay in their repositories.
 
-For local development, build an isolated marketplace and add its generated directory instead of the GitHub repository:
-
-```bash
-BLUEPRINT_DIST_ROOT="$(mktemp -d)"
-node scripts/build-plugin-packages.cjs --out "$BLUEPRINT_DIST_ROOT"
-claude plugin marketplace add "$BLUEPRINT_DIST_ROOT"
-claude plugin install project-blueprint@project-blueprint
-codex plugin marketplace add "$BLUEPRINT_DIST_ROOT"
-codex plugin add project-blueprint@project-blueprint
-```
-
-The local and GitHub sources intentionally use the same marketplace name. Do not configure both at once; remove the existing `project-blueprint` marketplace before switching sources.
 
 ## Development
 
-Requires Node.js 18 or later. The repository has no npm dependencies or `package.json`; Node scripts are invoked directly, matching `project-workflow`.
+Run all checks with `node scripts/check-all.cjs`. To test an unpublished build, generate an empty distribution directory and pass it to the same installer:
 
 ```bash
-node scripts/check-all.cjs
-node scripts/validate-blueprint.cjs /path/to/project-blueprint
-node scripts/build-plugin-packages.cjs --out /empty/output-directory
+dist=$(mktemp -d)
+node scripts/build-skills.cjs --out "$dist"
+# From a disposable project:
+npx skills add "$dist" --skill '*' --agent codex --copy
 ```
 
-`check-all.cjs` verifies:
-
-- the same nine actions exist in both adapters;
-- all five canonical roles are reachable;
-- adapter links and manifests are valid;
-- adapters remain thin and host-specific markers do not leak;
-- valid and invalid blueprint fixtures behave deterministically;
-- all nine forward-test inputs and hidden scoring oracles remain complete and reference real actions/roles;
-- self-contained Claude and Codex packages can be built.
-
-## Packaging
-
-Source adapters reference the shared root method. The build script produces self-contained packages containing the appropriate adapter plus `docs/actions`, `docs/reviewers`, `docs/methodology`, the validator, and the license.
-
-- Claude source manifest: `adapters/claude/.claude-plugin/plugin.json`
-- Codex source manifest: `adapters/codex/.codex-plugin/plugin.json`
-- Claude repository marketplace: `.claude-plugin/marketplace.json`
-- Codex repository marketplace: `.agents/plugins/marketplace.json`
-
-The source adapters remain on `main`; generated packages are not committed there. A commit whose subject starts with `release: vX.Y.Z` must carry the same new version in both manifests. After validation on `main`, CI builds both self-contained packages and force-publishes them, together with local marketplace indexes, to `plugin-dist`. The repository marketplace files resolve installations to the appropriate package on that branch.
+Build from a Git checkout. Edit the action and reviewer contracts in `docs/` and the skill entry points in `entries/`. Each installed action includes its runtime resources so it can be installed independently. A release commit of the form `release: vX.Y.Z ...` with a matching new `VERSION` builds and publishes the `skills-dist` branch after validation.
 
 ## Scope
 

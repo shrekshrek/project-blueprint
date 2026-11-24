@@ -4,10 +4,10 @@ const { spawnSync } = require("node:child_process");
 
 const root = path.resolve(__dirname, "..");
 const checks = [
-  ["check-adapter-parity.cjs"],
+  ["check-skill-contracts.cjs"],
   ["check-blueprint-fixtures.cjs"],
   ["check-scenario-contracts.cjs"],
-  ["build-plugin-packages.cjs", "--check"],
+  ["build-skills.cjs", "--check"],
 ];
 
 for (const [script, ...args] of checks) {

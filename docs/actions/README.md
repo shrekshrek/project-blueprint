@@ -6,6 +6,8 @@ Runtime skills must read the corresponding action completely and may add only ho
 
 ## Shared conventions
 
+Resolve the bundled validator at `resources/scripts/validate-blueprint.cjs` beside the active `SKILL.md`. Pass the project blueprint directory as its argument. When delegating, give the reviewer the [support-role contract](../reviewers/README.md), its role file and the evidence for its scope.
+
 Read supporting references only for the current decision. For a section link, read the heading and its subsections. Reuse unchanged material already in context and follow further links only when the current action needs them.
 
 - `plan-project` owns the user conversation, state transitions, conflict explanation, and final approval.

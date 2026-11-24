@@ -1,4 +1,4 @@
-name: CI
+name: Agent Skills
 
 on:
   push:
@@ -13,94 +13,73 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     outputs:
-      release: ${{ steps.commit_version.outputs.release }}
-      commit_ver: ${{ steps.commit_version.outputs.commit_ver }}
+      release: ${{ steps.version.outputs.release }}
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 2
-
       - uses: actions/setup-node@v7
         with:
           node-version: 20
           package-manager-cache: false
-
-      - name: Extract version from latest commit message
-        id: commit_version
+      - run: node scripts/check-all.cjs
+      - name: Check release version
+        id: version
+        shell: bash
         run: |
-          MSG=$(git log -1 --format=%s)
-          RELEASE=false
-          if echo "$MSG" | grep -qE '^release: v[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.]+)?([[:space:]].*)?$'; then
-            RELEASE=true
+          subject=$(git log -1 --format=%s)
+          if [[ "$subject" == "release: "* ]]; then
+            version=$(cat VERSION)
+            if [[ "$subject " != "release: v$version "* ]]; then
+              echo "::error::Release subject must start with release: v$version"
+              exit 1
+            fi
+            if git diff --quiet HEAD^ HEAD -- VERSION; then
+              echo "::error::Release requires a new VERSION"
+              exit 1
+            fi
+            echo "release=true" >> "$GITHUB_OUTPUT"
           fi
-          echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
-          COMMIT_VER=$(echo "$MSG" | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.]+)?' | head -1 | sed 's/^v//')
-          if [ -z "$COMMIT_VER" ]; then
-            echo "::notice::Commit message has no vX.Y.Z token — skipping version sync check."
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "commit_ver=$COMMIT_VER" >> "$GITHUB_OUTPUT"
-
-      - name: Extract version from plugin manifests
-        id: manifest_versions
-        if: steps.commit_version.outputs.skip != 'true'
-        run: |
-          echo "claude_ver=$(jq -r .version adapters/claude/.claude-plugin/plugin.json)" >> "$GITHUB_OUTPUT"
-          echo "codex_ver=$(jq -r .version adapters/codex/.codex-plugin/plugin.json)" >> "$GITHUB_OUTPUT"
-
-      - name: Compare versions
-        if: steps.commit_version.outputs.skip != 'true'
-        run: |
-          COMMIT_VER="${{ steps.commit_version.outputs.commit_ver }}"
-          CLAUDE_VER="${{ steps.manifest_versions.outputs.claude_ver }}"
-          CODEX_VER="${{ steps.manifest_versions.outputs.codex_ver }}"
-          if [ "$COMMIT_VER" != "$CLAUDE_VER" ] || [ "$COMMIT_VER" != "$CODEX_VER" ]; then
-            echo "::error::Version drift: commit=$COMMIT_VER Claude=$CLAUDE_VER Codex=$CODEX_VER"
-            exit 1
-          fi
-
-      - name: Require a new version for release commits
-        if: steps.commit_version.outputs.release == 'true'
-        run: |
-          RELEASE_VERSION="${{ steps.commit_version.outputs.commit_ver }}"
-          PREVIOUS_CLAUDE=$(git show HEAD^:adapters/claude/.claude-plugin/plugin.json | jq -r .version)
-          PREVIOUS_CODEX=$(git show HEAD^:adapters/codex/.codex-plugin/plugin.json | jq -r .version)
-          if [ "$RELEASE_VERSION" = "$PREVIOUS_CLAUDE" ] || [ "$RELEASE_VERSION" = "$PREVIOUS_CODEX" ]; then
-            echo "::error::Release v$RELEASE_VERSION reuses the previous plugin version."
-            exit 1
-          fi
-
-      - name: Validate source and generated packages
-        run: node scripts/check-all.cjs
 
   publish:
     needs: validate
     if: github.event_name == 'push' && needs.validate.outputs.release == 'true'
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+    concurrency: publish-skills
     steps:
       - uses: actions/checkout@v7
-
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: 20
           package-manager-cache: false
-
-      - name: Build release packages
-        run: node scripts/build-plugin-packages.cjs --out "$RUNNER_TEMP/plugin-dist"
-
-      - name: Publish generated plugin branch
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RELEASE_VERSION: ${{ needs.validate.outputs.commit_ver }}
+      - name: Build installable skills
+        run: node scripts/build-skills.cjs --out "$RUNNER_TEMP/skills-dist"
+      - name: Publish distribution
+        shell: bash
         run: |
-          cd "$RUNNER_TEMP/plugin-dist"
-          git init -b plugin-dist
+          version=$(cat VERSION)
+          if git ls-remote --exit-code --heads origin skills-dist; then
+            git fetch --depth=1 origin refs/heads/skills-dist
+            previous_source=$(git log -1 --format='%(trailers:key=Source-Commit,valueonly)' FETCH_HEAD)
+            if [[ "$previous_source" == "$GITHUB_SHA" ]]; then exit 0; fi
+            if ! git merge-base --is-ancestor "$previous_source" "$GITHUB_SHA"; then
+              echo "::error::Distribution already refers to a newer or unrelated source commit"
+              exit 1
+            fi
+            git switch -C skills-dist FETCH_HEAD
+            git rm -r --ignore-unmatch skills
+          else
+            result=$?
+            if [[ $result != 2 ]]; then exit "$result"; fi
+            git switch --orphan skills-dist
+          fi
+          cp -R "$RUNNER_TEMP/skills-dist/skills" skills
+          git add -f -- skills
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --all
-          git commit -m "build: project-blueprint v${RELEASE_VERSION} from ${GITHUB_SHA}"
-          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin plugin-dist
+          git commit -m "Build v$version" -m "Source-Commit: $GITHUB_SHA"
+          git push origin HEAD:skills-dist

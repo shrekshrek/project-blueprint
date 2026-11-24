@@ -4,11 +4,11 @@
 
 Project Blueprint is the pre-development companion to `project-workflow`. It helps a user and AI establish an evidence-backed, AI-readable planning contract before feature delivery begins.
 
-## Current scope: v0.3.1
+## Current scope
 
 - Nine user-callable planning skills with `plan-project` as the adaptive conversation manager.
 - Five conditional internal support roles: evidence research, product challenge, domain/data review, architecture review, and consistency audit.
-- One canonical methodology core shared by native Claude Code and Codex adapters.
+- One canonical methodology core shared by all skill entries.
 - Inputs may be an idea, requirements, research, an existing blueprint, or an unstable project needing re-baselining.
 - Canonical outputs are composable Markdown, YAML, and Mermaid artifacts; optional decision aids support layout, interaction or visual choices without replacing the accepted textual contract.
 - When attached to an implementation repository, canonical artifacts default to `docs/blueprint/`; the manifest remains the root index and existing projects are not migrated solely for layout consistency.
@@ -16,7 +16,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 - Planning covers feasibility, users/scenarios, journeys, capabilities/modules, domain ownership, concern-driven architecture/data views, quality risks, subsystem depth, revision impact, vertical slices, and development handoff.
 - A deterministic validator checks manifest fields, canonical files, view dispositions, handoff state/version consistency, read-first paths, referenced definitions and the approval boundary. Semantic acceptance and evidence quality still require review.
 - Blueprint approval and development authorization are separate; development begins only after explicit authorization.
-- GitHub marketplace indexes route Claude Code and Codex to host-specific, self-contained packages generated on the `plugin-dist` branch by versioned release CI.
+- Release CI publishes nine self-contained Agent Skills on the `skills-dist` branch.
 
 ## Product invariants
 
@@ -28,10 +28,10 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 6. ER and DDD are conditional tools, not mandatory artifacts for every project.
 7. Multi-subsystem planning establishes global black-box contracts before selected deep dives; child scopes cannot silently override parent contracts.
 8. Confirmed revisions require impact analysis and consistency closure.
-9. Claude and Codex adapters share one canonical action/reviewer/methodology core.
-10. The plugin may recommend the target-appropriate `project-workflow` entry action and writes authorized planning artifacts without changing application code or runtime configuration.
+9. All clients use one canonical action/reviewer/methodology core.
+10. The planning skills may recommend the target-appropriate `project-workflow` entry action and writes authorized planning artifacts without changing application code or runtime configuration.
 11. Action count never determines file count; each decision has one owning artifact and other artifacts reference it instead of repeating it.
-12. `main` owns canonical source; generated install packages live only on `plugin-dist` and must match both source manifest versions.
+12. `main` owns canonical source; generated install packages live on `skills-dist` and carry the release version from `VERSION`.
 13. Multi-role readiness review uses one stable bounded input; reused reports require verified input and dependency validity for the current boundary, and coverage references reuse existing IDs or artifact sections rather than forcing new identifiers.
 14. Planning follows a risk-routed diverge-then-converge loop: applicable material concerns are explored and researched before convergence; specialist, evidence, view, and review depth expand when they reduce uncertainty or establish boundaries, while speculative completeness is excluded.
 
