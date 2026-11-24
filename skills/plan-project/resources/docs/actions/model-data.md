@@ -1,3 +1,8 @@
+---
+name: model-data
+description: "Model data ownership, representations and lifecycle during Blueprint planning or explicit project-level data planning; not ordinary feature schema changes."
+---
+
 # model-data
 
 Choose data representations that match the project's information shape, ownership, lifecycle, and risk.
@@ -8,7 +13,7 @@ Within the shared Blueprint applicability boundary, the system persists, exchang
 
 ## Required reference
 
-Read `docs/methodology/view-selection.md`.
+Read [view selection](../methodology/view-selection.md).
 
 ## Inputs
 
@@ -26,7 +31,7 @@ Scenarios, domain concepts and owners, system responsibilities, data uses, lifec
    - event schemas and state models for event-driven lifecycle;
    - data flow/lineage for pipelines and governance.
 4. Detail physical schemas where existing systems, migrations, cross-slice contracts or implementation readiness require them. Distinguish observed schemas, accepted constraints and provisional choices. Provisional means the design is unresolved, not that the table or its data is temporary.
-5. Invoke `domain-data-reviewer` for important persistence, semantic complexity, sensitive data, or cross-system contracts.
+5. Invoke [domain-data-reviewer](../reviewers/domain-data-reviewer.md) for important persistence, semantic complexity, sensitive data, or cross-system contracts.
 6. Reconcile ownership changes with domain, architecture, and subsystem contracts.
 
 ## Outputs

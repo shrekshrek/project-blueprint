@@ -2,15 +2,14 @@
 name: model-users-and-journeys
 description: "Model users and journeys during Blueprint planning or explicit project-level journey planning; not ordinary feature interaction or layout work."
 metadata:
-  version: "0.4.2"
+  version: "0.5.0"
 ---
 
 # model-users-and-journeys
 
-Match the user's language. Read [the shared action conventions](resources/docs/actions/README.md) and [the canonical action](resources/docs/actions/model-users-and-journeys.md) completely, then follow both.
+Match the user's language and preserve file language. Read [the action](../plan-project/resources/docs/actions/model-users-and-journeys.md) and [the shared conventions](../plan-project/resources/docs/actions/README.md) completely and follow both.
 
-- Read any methodology files required by the action from [the shared methodology directory](resources/docs/methodology/).
-- Treat invocation content as input already supplied; do not re-ask it.
-- Use repository and web tools only when the action's evidence boundary requires them.
-- Keep canonical Markdown, YAML, and Mermaid source readable and cite changed artifact paths.
-- Do not start implementation or invoke another workflow without explicit user approval.
+Use these references when the action or assigned reviewer calls for them:
+
+- [docs/methodology/interaction-and-routing.md#decision-aids](../plan-project/resources/docs/methodology/interaction-and-routing.md#decision-aids)
+- [docs/methodology/](../plan-project/resources/docs/methodology/)

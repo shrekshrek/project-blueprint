@@ -1,3 +1,8 @@
+---
+name: model-domain
+description: "Clarify domain rules and ownership during Blueprint planning or explicit project-level domain planning; not ordinary feature rules or internal refactoring."
+---
+
 # model-domain
 
 Clarify business language, rules, responsibility, and ownership before choosing technical structure.
@@ -17,7 +22,7 @@ Charter, scenarios, capabilities/modules, glossary, current models for rebaselin
 3. Propose bounded contexts only where a distinct language/model or ownership boundary exists.
 4. Record responsibilities, invariants, policies, aggregate candidates only when useful, authoritative data, and context relationships.
 5. Treat DDD as a boundary tool; do not force tactical patterns or microservices.
-6. Invoke `domain-data-reviewer` when rules, ownership, persistent data, or cross-system contracts are material.
+6. Invoke [domain-data-reviewer](../reviewers/domain-data-reviewer.md) when rules, ownership, persistent data, or cross-system contracts are material.
 7. Send structural integration concerns to `design-architecture` and information-shape concerns to `model-data`.
 
 ## Outputs
