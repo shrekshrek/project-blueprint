@@ -2,7 +2,7 @@
 name: plan-project
 description: "Use when two or more features need one shared decision, such as who owns data or when a version is fixed. Resolve just that decision and stop. Also create, resume, revise or review project blueprints for inception, re-baselining, multi-subsystem planning or development readiness. Ordinary feature work using settled rules stays in Workflow."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # plan-project

@@ -2,7 +2,7 @@
 name: model-domain
 description: "Clarify domain rules and ownership during Blueprint planning or explicit project-level domain planning; not ordinary feature rules or internal refactoring."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # model-domain

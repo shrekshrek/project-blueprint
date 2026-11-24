@@ -2,7 +2,7 @@
 name: frame-project
 description: "Frame project value, feasibility and constraints within Blueprint planning or an explicit project-framing request; open-ended project inception belongs to plan-project, not this specialist."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # frame-project

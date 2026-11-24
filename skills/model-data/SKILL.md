@@ -2,7 +2,7 @@
 name: model-data
 description: "Model data ownership, representations and lifecycle during Blueprint planning or explicit project-level data planning; not ordinary feature schema changes."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # model-data

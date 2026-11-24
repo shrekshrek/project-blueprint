@@ -2,7 +2,7 @@
 name: design-architecture
 description: "Design system boundaries and architecture views during Blueprint planning or explicit project-level architecture planning; not ordinary feature design or internal refactoring."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # design-architecture

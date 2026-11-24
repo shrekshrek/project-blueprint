@@ -2,7 +2,7 @@
 name: review-blueprint
 description: "Independently review a blueprint using risk-routed product, evidence, domain-data, architecture, and consistency roles before handoff or after major revision."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # review-blueprint

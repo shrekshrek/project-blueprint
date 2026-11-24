@@ -2,7 +2,7 @@
 name: plan-delivery
 description: "Turn a confirmed blueprint into vertical learning slices and an AI-ready development handoff without starting implementation."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # plan-delivery

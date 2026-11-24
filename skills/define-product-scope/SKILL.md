@@ -2,7 +2,7 @@
 name: define-product-scope
 description: "Define project capabilities, MVP and non-goals during Blueprint planning or explicit project-level scope planning; not ordinary feature scope changes."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # define-product-scope

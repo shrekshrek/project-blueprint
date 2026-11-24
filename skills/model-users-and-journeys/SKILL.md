@@ -2,7 +2,7 @@
 name: model-users-and-journeys
 description: "Model users and journeys during Blueprint planning or explicit project-level journey planning; not ordinary feature interaction or layout work."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
 ---
 
 # model-users-and-journeys
