@@ -51,7 +51,6 @@ Five internal support roles provide evidence research, product challenge, domain
 docs/actions/                 canonical contracts for 9 user skills
 docs/reviewers/               canonical contracts for 5 internal roles
 docs/methodology/             routing, artifacts, view selection, subsystem revision
-entries/                      portable entry points for the nine skills
 scripts/                      packaging, scenario checks, and blueprint validation
 tests/fixtures/               deterministic validator fixtures
 tests/scenarios/              isolated forward-test inputs and scoring oracles
@@ -80,15 +79,15 @@ the same directory.
 
 ## Install
 
-Use Node.js 22.20 or later for the skills CLI. Install the nine Agent Skills from the release branch. For local Codex and DeepSeek Harness using their default shared user skill directory:
+Use Node.js 22.20 or later. Install all nine skills together in `~/.agents/skills/`. Their shared resources live under `plan-project/resources/`.
 
 ```bash
-npx skills add https://github.com/shrekshrek/project-blueprint/tree/skills-dist --skill '*' --agent codex --global --copy
+npx skills add https://github.com/shrekshrek/project-blueprint/tree/skills-dist --skill '*' --agent codex claude-code --global
 ```
 
-For Claude Code, add `--agent claude-code` to the same command. Local Cursor can discover the shared skills. Omit `--global` for a project installation. Check existing skills of the same name before replacing them. Re-run the command with the same scope and clients to update. For an unattended install, append `--yes` after checking the scope and names.
+Choose **Symlink** if prompted. Codex, local Cursor and DeepSeek Harness with default settings read the shared directory directly. Claude Code uses links in `~/.claude/skills/` to the same files. Omit `--global` for project scope. To update or migrate an earlier `--copy` install, repeat the command at its original scope. Review any same-named skills before replacing them.
 
-If your install tracks `main`, run the branch command above once with the same scope and clients to switch the installer lock to `skills-dist`. Existing `skills-dist` installations can update normally. To pin a release, use `shrekshrek/project-blueprint@vX.Y.Z` with its published version tag.
+If your install tracks `main`, run the branch command above once with the same scope and clients to switch the installer lock to `skills-dist`. To pin a release, use `shrekshrek/project-blueprint@vX.Y.Z` with its published version tag.
 
 Open a fresh chat and invoke `plan-project`. Check the version under `metadata.version` in its installed `SKILL.md`. Independent reviews require a host with subagent support or the fallback allowed by the selected action.
 
@@ -117,10 +116,10 @@ Run all checks with `node scripts/check-all.cjs`. To test an unpublished build, 
 dist=$(mktemp -d)
 node scripts/build-skills.cjs --out "$dist"
 # From a disposable project:
-npx skills add "$dist" --skill '*' --agent codex --copy
+npx skills add "$dist" --skill '*' --agent codex claude-code
 ```
 
-Build from a Git checkout. Edit the action and reviewer contracts in `docs/` and the skill entry points in `entries/`. Each installed action includes its runtime resources so it can be installed independently. A release commit of the form `release: vX.Y.Z ...` with a matching new `VERSION` publishes the validated package to `skills-dist` and tags that package commit. Its `Source-Commit` trailer identifies the source on `main`.
+Build from a Git checkout. Maintain each skill’s discovery metadata and behavior in `docs/actions/<name>.md` and its reviewer methods in `docs/reviewers/`. A release commit of the form `release: vX.Y.Z ...` with a matching new `VERSION` publishes the validated package to `skills-dist` and tags that package commit. Its `Source-Commit` trailer identifies the source on `main`.
 
 ## Scope
 

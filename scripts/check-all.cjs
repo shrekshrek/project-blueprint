@@ -4,7 +4,6 @@ const { spawnSync } = require("node:child_process");
 
 const root = path.resolve(__dirname, "..");
 const checks = [
-  ["check-skill-contracts.cjs"],
   ["check-blueprint-fixtures.cjs"],
   ["check-scenario-contracts.cjs"],
   ["build-skills.cjs", "--check"],

@@ -1,3 +1,8 @@
+---
+name: define-product-scope
+description: "Define project capabilities, MVP and non-goals during Blueprint planning or explicit project-level scope planning; not ordinary feature scope changes."
+---
+
 # define-product-scope
 
 Turn validated outcomes and scenarios into a coherent product boundary and MVP.
@@ -16,7 +21,7 @@ Charter, scenarios/journeys, constraints, current product behavior for rebaselin
 2. Group capabilities into modules by responsibility and user/business cohesion, not technical layers.
 3. Define each module's purpose, functions, non-goals, rules, inputs/outputs, data owner, dependencies, quality needs, and acceptance.
 4. Slice MVP by demonstrable end-to-end outcome; state later, deferred, and excluded scope.
-5. Compare scope and design alternatives by value, risk and total cost; invoke `product-challenger` for material uncertainty or disputed scope.
+5. Compare scope and design alternatives by value, risk and total cost; invoke [product-challenger](../reviewers/product-challenger.md) for material uncertainty or disputed scope.
 6. Surface terminology, rule, or ownership ambiguity for `model-domain`.
 7. Resolve consequential module-boundary choices together when coupled; reuse accepted boundaries.
 

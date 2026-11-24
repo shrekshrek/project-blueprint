@@ -16,7 +16,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 - Planning covers feasibility, users/scenarios, journeys, capabilities/modules, domain ownership, concern-driven architecture/data views, quality risks, subsystem depth, revision impact, vertical slices, and development handoff.
 - A deterministic validator checks manifest fields, canonical files, view dispositions, handoff state/version consistency, read-first paths, referenced definitions and the approval boundary. Semantic acceptance and evidence quality still require review.
 - Blueprint approval and development authorization are separate; development begins only after explicit authorization.
-- Release CI publishes nine self-contained Agent Skills on the `skills-dist` branch.
+- Release CI publishes nine Agent Skills installed together with one shared resource directory on the `skills-dist` branch.
 
 ## Product invariants
 

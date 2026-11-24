@@ -2,7 +2,7 @@
 
 These are canonical researcher, reviewer, and auditor specifications. They are not five mandatory always-on agents.
 
-The owning action decides applicability. A host with subagent capability should use a fresh invocation with the smallest sufficient evidence set. When dispatch is unavailable, the main agent may apply the same role contract sequentially, must disclose the fallback, and must not silently omit a required review.
+The owning action decides applicability. A host with subagent capability should use a fresh invocation with the smallest sufficient evidence set and no expected conclusion. When dispatch is unavailable, the main agent may apply the same role contract sequentially, must disclose the fallback, and must not silently omit a required review.
 
 Reviewers work read-only and report in the caller’s language. They return findings to the owning action; they do not take over the user conversation or make unconfirmed product decisions.
 

@@ -1,3 +1,8 @@
+---
+name: design-architecture
+description: "Design system boundaries and architecture views during Blueprint planning or explicit project-level architecture planning; not ordinary feature design or internal refactoring."
+---
+
 # design-architecture
 
 Design coherent system structure and runtime behavior for the selected concerns and quality constraints.
@@ -8,7 +13,7 @@ Within the shared Blueprint applicability boundary, evaluate the project’s bou
 
 ## Required reference
 
-Read `docs/methodology/view-selection.md`; for multiple subsystems also read `subsystem-and-revision.md`.
+Read [view selection](../methodology/view-selection.md); for multiple subsystems also read [subsystem planning](../methodology/subsystem-and-revision.md).
 
 ## Inputs
 
@@ -22,7 +27,7 @@ Confirmed scenarios, scope/modules, domain ownership, quality goals, constraints
 4. Define responsibilities, owners, interfaces, trust boundaries, failure behavior, observability, and rationale in text before or beside diagrams.
 5. Compare structures against existing systems, deployment, scale, resilience, data, security and team constraints. Choose by total delivery and maintenance cost rather than component count.
 6. For multiple subsystems, establish global landscape and black-box contracts before selected deep dives.
-7. Invoke `architecture-reviewer` for material system/quality risks or disputed architecture boundaries.
+7. Invoke [architecture-reviewer](../reviewers/architecture-reviewer.md) for material system/quality risks or disputed architecture boundaries.
 8. Record consequential omissions under the shared artifact contract; focus on their rationale and revisit conditions.
 
 ## Outputs

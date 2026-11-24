@@ -1,3 +1,8 @@
+---
+name: review-blueprint
+description: "Independently review a blueprint using risk-routed product, evidence, domain-data, architecture, and consistency roles before handoff or after major revision."
+---
+
 # review-blueprint
 
 Run independent, risk-routed review over a stable blueprint snapshot and aggregate actionable findings.
@@ -16,11 +21,11 @@ Check required artifacts for the selected depth, valid assertion/view statuses, 
 
 ## Role routing
 
-- `evidence-researcher`: volatile/external facts, repository claims, or conflicting sources.
-- `product-challenger`: value, evidence, MVP, or scope risk.
-- `domain-data-reviewer`: domain/data complexity, ownership, persistence, or contracts.
-- `architecture-reviewer`: material system/quality risks or disputed architecture boundaries.
-- `consistency-auditor`: every final handoff and every major revision.
+- [evidence-researcher](../reviewers/evidence-researcher.md): volatile/external facts, repository claims, or conflicting sources.
+- [product-challenger](../reviewers/product-challenger.md): value, evidence, MVP, or scope risk.
+- [domain-data-reviewer](../reviewers/domain-data-reviewer.md): domain/data complexity, ownership, persistence, or contracts.
+- [architecture-reviewer](../reviewers/architecture-reviewer.md): material system/quality risks or disputed architecture boundaries.
+- [consistency-auditor](../reviewers/consistency-auditor.md): every final handoff and every major revision.
 
 Run domain-data and architecture review independently on the same stable snapshot when both apply. Give roles only the evidence required by their contract; do not include the expected verdict.
 

@@ -1,3 +1,8 @@
+---
+name: frame-project
+description: "Frame project value, feasibility and constraints within Blueprint planning or an explicit project-framing request; open-ended project inception belongs to plan-project, not this specialist."
+---
+
 # frame-project
 
 Establish whether the project is worth pursuing and what decision the blueprint must enable.
@@ -16,9 +21,9 @@ Project idea or charter, stakeholder statements, business evidence, existing sys
 2. Identify desired outcomes, users/stakeholders, sponsor, success signals, non-goals, and decision deadline.
 3. Separate evidence, inference, assumption, conflict, and unknown.
 4. Assess feasibility across product/adoption, operations/process, technology/data, and delivery/economic/compliance dimensions.
-5. Rank unknowns by impact and uncertainty; use `evidence-researcher` for volatile, external, or conflicting facts.
+5. Rank unknowns by impact and uncertainty; use [evidence-researcher](../reviewers/evidence-researcher.md) for volatile, external, or conflicting facts.
 6. Propose go, conditional-go, research-first, narrow, or stop, with rationale.
-7. Invoke `product-challenger` when value evidence is weak or investment/scope choices carry material risk.
+7. Invoke [product-challenger](../reviewers/product-challenger.md) when value evidence is weak or investment/scope choices carry material risk.
 8. Ask only questions that can change viability, scope direction, or success.
 
 ## Outputs

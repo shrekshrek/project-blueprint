@@ -1,3 +1,8 @@
+---
+name: plan-delivery
+description: "Turn a confirmed blueprint into vertical learning slices and an AI-ready development handoff without starting implementation."
+---
+
 # plan-delivery
 
 Convert a confirmed planning baseline into learning-oriented vertical slices and an AI-ready development handoff.

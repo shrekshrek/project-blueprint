@@ -1,3 +1,8 @@
+---
+name: model-users-and-journeys
+description: "Model users and journeys during Blueprint planning or explicit project-level journey planning; not ordinary feature interaction or layout work."
+---
+
 # model-users-and-journeys
 
 Model who acts, what they are trying to achieve, and how value is experienced end to end.

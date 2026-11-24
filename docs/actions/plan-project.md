@@ -1,3 +1,8 @@
+---
+name: plan-project
+description: "Use when two or more features need one shared decision, such as who owns data or when a version is fixed. Resolve just that decision and stop. Also create, resume, revise or review project blueprints for inception, re-baselining, multi-subsystem planning or development readiness. Ordinary feature work using settled rules stays in Workflow."
+---
+
 # plan-project
 
 Adaptive manager for creating, resuming, revising, or reviewing an AI-ready project blueprint.
@@ -15,7 +20,7 @@ Do not use for ordinary feature planning inside a stable project.
 ## Required references
 
 Use the relevant sections of [interaction and routing](../methodology/interaction-and-routing.md) to start or resume planning. Consult the [artifact contract](../methodology/artifact-contract.md) when creating or updating blueprint records.
-Use [view selection](../methodology/view-selection.md) when choosing views and [subsystem planning and revision](../methodology/subsystem-and-revision.md) when planning subsystems or revising confirmed decisions. Read the selected specialist action before invoking it.
+Use [view selection](../methodology/view-selection.md) when choosing views and [subsystem planning and revision](../methodology/subsystem-and-revision.md) when planning subsystems or revising confirmed decisions. Read the selected specialist action before invoking it. Route applicable support through [evidence research](../reviewers/evidence-researcher.md), [product challenge](../reviewers/product-challenger.md), [domain and data](../reviewers/domain-data-reviewer.md), [architecture](../reviewers/architecture-reviewer.md) or [consistency](../reviewers/consistency-auditor.md).
 
 ## Inputs
 
