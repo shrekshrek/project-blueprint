@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Blueprint"
+  short_description: "Run independent risk-routed blueprint review"
+  default_prompt: "Use $review-blueprint for this project planning request."

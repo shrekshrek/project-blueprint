@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Project"
+  short_description: "Guide an adaptive AI-ready project blueprint"
+  default_prompt: "Use $plan-project for this project planning request."

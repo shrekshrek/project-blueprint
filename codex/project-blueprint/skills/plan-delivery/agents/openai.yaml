@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Delivery"
+  short_description: "Create vertical slices and a development handoff"
+  default_prompt: "Use $plan-delivery for this project planning request."
