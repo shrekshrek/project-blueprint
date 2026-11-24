@@ -16,7 +16,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 - Planning covers feasibility, users/scenarios, journeys, capabilities/modules, domain ownership, concern-driven architecture/data views, quality risks, subsystem depth, revision impact, vertical slices, and development handoff.
 - A deterministic validator checks manifest fields, canonical files, view dispositions, handoff state/version consistency, read-first paths, referenced definitions and the approval boundary. Semantic acceptance and evidence quality still require review.
 - Blueprint approval and development authorization are separate; development begins only after explicit authorization.
-- The repository exposes nine independently installable Agent Skills under `skills/`.
+- Release CI publishes nine self-contained Agent Skills on the `skills-dist` branch.
 
 ## Product invariants
 
@@ -31,7 +31,7 @@ Project Blueprint is the pre-development companion to `project-workflow`. It hel
 9. All clients use one canonical action/reviewer/methodology core.
 10. The planning skills may recommend the target-appropriate `project-workflow` entry action and writes authorized planning artifacts without changing application code or runtime configuration.
 11. Action count never determines file count; each decision has one owning artifact and other artifacts reference it instead of repeating it.
-12. Generated skills on `main` match the canonical source and carry the version from `VERSION`. Validated release commits have matching Git tags.
+12. `main` owns canonical source; generated install packages live on `skills-dist` and carry the release version from `VERSION`.
 13. Multi-role readiness review uses one stable bounded input; reused reports require verified input and dependency validity for the current boundary, and coverage references reuse existing IDs or artifact sections rather than forcing new identifiers.
 14. Planning follows a risk-routed diverge-then-converge loop: applicable material concerns are explored and researched before convergence; specialist, evidence, view, and review depth expand when they reduce uncertainty or establish boundaries, while speculative completeness is excluded.
 

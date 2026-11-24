@@ -29,7 +29,7 @@ This file is the cross-tool source of truth for working in this repository.
 - Maintain action and reviewer logic once in their canonical contracts.
 - Update action/reviewer/methodology first, then the affected skill entries and checks when the public behavior changes.
 - Add or update deterministic fixtures for schema, reference, state, and packaging changes.
-- Use `release: vX.Y.Z ...` only for an intentional release; update `VERSION` in the same commit. Regenerate `skills/` with `node scripts/build-skills.cjs --sync` and commit it alongside the source. CI verifies the contents and tags validated releases.
+- Use `release: vX.Y.Z ...` only for an intentional release; update `VERSION` in the same commit. CI publishes generated packages to `skills-dist`.
 - Use normal implementation and review flow in this repository; do not create `feature-init` artifacts unless the user explicitly asks for them.
 
 ## Working Rules
